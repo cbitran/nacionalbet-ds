@@ -2,7 +2,7 @@
 
 Gerado a partir de `figma-sets.json` (2026-06-21) × `code-props.json` (2026-06-21).
 
-**Resumo:** 🔴 0 · 🟡 0 · 🔵 30 · ⚪ 3
+**Resumo:** 🔴 0 · 🟡 0 · 🔵 30 · ⚪ 4
 
 | Sev | Componente | Eixo | Achado |
 |-----|-----------|------|--------|
@@ -39,5 +39,6 @@ Gerado a partir de `figma-sets.json` (2026-06-21) × `code-props.json` (2026-06-
 | ⚪ INFO | MenuItem | - | pulado: Interno de Select/DropdownMenu — não é componente público |
 | ⚪ INFO | Radio | - | pulado: No @nuxt/ui o componente é RadioGroup (variant card/list/table, size xs-xl, color, orientation) — revisar manualmente |
 | ⚪ INFO | Search | - | pulado: Não é componente do @nuxt/ui (é Input type=search ou InputMenu) — revisar manualmente |
+| ⚪ INFO | SectionHeader | - | pulado: Composite/pattern (USeparator + UButton) — sem componente único no @nuxt/ui; paridade não se aplica |
 
 Legenda: 🔴 quebra de paridade (corrigir) · 🟡 cobertura incompleta · 🔵 por design / informativo · ⚪ ignorado.
