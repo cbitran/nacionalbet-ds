@@ -36,6 +36,8 @@
     "Tooltip": "UTooltip: text/kbds/arrow/position — sem variant/size/color; bolha única no Figma",
     "DropdownMenu": "UDropdownMenu: painel dirigido por `items`; estados de item modelados no painel do Figma (sem variant/size/color de set)",
     "Drawer": "UDrawer: overlay com `direction`; painel modelado no Figma (sem variant/size/color)",
-    "Pagination": "UPagination: barra dirigida por total/items-per-page; representada como 1 componente no Figma"
+    "Pagination": "UPagination: barra dirigida por total/items-per-page; representada como 1 componente no Figma",
+    "Stepper": "UStepper: dirigido por `items`; etapas representadas em 1 componente no Figma",
+    "Table": "UTable: TanStack (columns+data); cabeçalho+linhas representados em 1 componente no Figma"
   }
 }

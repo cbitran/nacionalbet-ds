@@ -2,7 +2,7 @@
 
 Gerado a partir de `figma-sets.json` (2026-06-21) × `code-props.json` (2026-06-21).
 
-**Resumo:** 🔴 0 · 🟡 0 · 🔵 35 · ⚪ 10
+**Resumo:** 🔴 0 · 🟡 0 · 🔵 35 · ⚪ 12
 
 | Sev | Componente | Eixo | Achado |
 |-----|-----------|------|--------|
@@ -50,6 +50,8 @@ Gerado a partir de `figma-sets.json` (2026-06-21) × `code-props.json` (2026-06-
 | ⚪ INFO | Search | - | pulado: Não é componente do @nuxt/ui (é Input type=search ou InputMenu) — revisar manualmente |
 | ⚪ INFO | SectionHeader | - | pulado: Composite/pattern (USeparator + UButton) — sem componente único no @nuxt/ui; paridade não se aplica |
 | ⚪ INFO | Skeleton | - | pulado: USkeleton é bloco dimensionado por classe; sem variant/size/color. shape (line/circle/block) é convenção do DS no Figma |
+| ⚪ INFO | Stepper | - | pulado: UStepper: dirigido por `items`; etapas representadas em 1 componente no Figma |
+| ⚪ INFO | Table | - | pulado: UTable: TanStack (columns+data); cabeçalho+linhas representados em 1 componente no Figma |
 | ⚪ INFO | Tooltip | - | pulado: UTooltip: text/kbds/arrow/position — sem variant/size/color; bolha única no Figma |
 
 Legenda: 🔴 quebra de paridade (corrigir) · 🟡 cobertura incompleta · 🔵 por design / informativo · ⚪ ignorado.

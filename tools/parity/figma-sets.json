@@ -34,6 +34,8 @@
     { "name": "DropdownMenu", "variants": {}, "_note": "painel aberto com itens (default/highlighted/danger), separador, atalho" },
     { "name": "Drawer", "variants": {}, "booleans": ["Handle"], "texts": ["Título"], "_note": "bottom-sheet (handle+header+conteúdo)" },
     { "name": "Tabs", "variants": { "variant": ["pill","link"] }, "_note": "color/size via prop" },
-    { "name": "Pagination", "variants": {}, "_note": "barra representativa (prev/números/ativa/ellipsis/next)" }
+    { "name": "Pagination", "variants": {}, "_note": "barra representativa (prev/números/ativa/ellipsis/next)" },
+    { "name": "Stepper", "variants": {}, "_note": "etapas concluída/ativa/futura + conectores" },
+    { "name": "Table", "variants": {}, "_note": "cabeçalho + linhas (representativo)" }
   ]
 }
