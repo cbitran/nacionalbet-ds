@@ -28,6 +28,8 @@
     { "name": "Avatar", "variants": { "color": ["primary","secondary","success","info","warning","error","neutral"], "size": ["sm","md","lg"] }, "booleans": ["Imagem"], "texts": ["Iniciais"] },
     { "name": "Progress", "variants": { "color": ["primary","secondary","success","info","warning","error","neutral"], "size": ["sm","md","lg"] } },
     { "name": "Skeleton", "variants": { "shape": ["line","circle","block"] }, "_note": "shape = convenção DS; USkeleton no código é dimensionado por classe" },
-    { "name": "EmptyState", "variants": {}, "booleans": ["Ícone","Ação"], "texts": ["Título","Descrição","Rótulo ação"], "_note": "composite/pattern — sem UEmpty no @nuxt/ui" }
+    { "name": "EmptyState", "variants": {}, "booleans": ["Ícone","Ação"], "texts": ["Título","Descrição","Rótulo ação"], "_note": "composite/pattern — sem UEmpty no @nuxt/ui" },
+    { "name": "Tooltip", "variants": {}, "booleans": ["Seta","Atalho"], "texts": ["Texto"] },
+    { "name": "Toast", "variants": { "variant": ["solid","outline","soft","subtle"], "color": ["primary","secondary","success","info","warning","error","neutral"] }, "booleans": ["Ícone","Fechar"], "texts": ["Título","Texto descrição"] }
   ]
 }

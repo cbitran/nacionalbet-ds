@@ -22,7 +22,8 @@
     "Chip":        { "color": ["primary","secondary","success","info","warning","error","neutral"], "size": ["3xs","2xs","xs","sm","md","lg","xl","2xl","3xl"], "_note": "color=variant no Figma; size single (dot) por design." },
     "Alert":       { "variant": ["solid","outline","soft","subtle"], "color": ["primary","secondary","success","info","warning","error","neutral"] },
     "Avatar":      { "color": ["primary","secondary","success","info","warning","error","neutral"], "size": ["3xs","2xs","xs","sm","md","lg","xl","2xl","3xl"] },
-    "Progress":    { "color": ["primary","secondary","success","info","warning","error","neutral"], "size": ["xs","sm","md","lg","xl"] }
+    "Progress":    { "color": ["primary","secondary","success","info","warning","error","neutral"], "size": ["xs","sm","md","lg","xl"] },
+    "Toast":       { "variant": ["solid","outline","soft","subtle"], "color": ["primary","secondary","success","info","warning","error","neutral"] }
   },
   "skip": {
     "Radio": "No @nuxt/ui o componente é RadioGroup (variant card/list/table, size xs-xl, color, orientation) — revisar manualmente",
@@ -30,6 +31,7 @@
     "MenuItem": "Interno de Select/DropdownMenu — não é componente público",
     "SectionHeader": "Composite/pattern (USeparator + UButton) — sem componente único no @nuxt/ui; paridade não se aplica",
     "Skeleton": "USkeleton é bloco dimensionado por classe; sem variant/size/color. shape (line/circle/block) é convenção do DS no Figma",
-    "EmptyState": "Composite/pattern (ícone+título+descrição+UButton) — sem UEmpty no @nuxt/ui"
+    "EmptyState": "Composite/pattern (ícone+título+descrição+UButton) — sem UEmpty no @nuxt/ui",
+    "Tooltip": "UTooltip: text/kbds/arrow/position — sem variant/size/color; bolha única no Figma"
   }
 }
