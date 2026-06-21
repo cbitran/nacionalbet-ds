@@ -26,6 +26,8 @@
     { "name": "Chip", "variants": { "color": ["primary","secondary","success","info","warning","error","neutral"] }, "booleans": ["Texto"], "texts": ["Número"] },
     { "name": "Alert", "variants": { "variant": ["solid","outline","soft","subtle"], "color": ["primary","secondary","success","info","warning","error","neutral"] }, "booleans": ["Ícone","Fechar","Descrição"], "texts": ["Título","Texto descrição"] },
     { "name": "Avatar", "variants": { "color": ["primary","secondary","success","info","warning","error","neutral"], "size": ["sm","md","lg"] }, "booleans": ["Imagem"], "texts": ["Iniciais"] },
-    { "name": "Progress", "variants": { "color": ["primary","secondary","success","info","warning","error","neutral"], "size": ["sm","md","lg"] } }
+    { "name": "Progress", "variants": { "color": ["primary","secondary","success","info","warning","error","neutral"], "size": ["sm","md","lg"] } },
+    { "name": "Skeleton", "variants": { "shape": ["line","circle","block"] }, "_note": "shape = convenção DS; USkeleton no código é dimensionado por classe" },
+    { "name": "EmptyState", "variants": {}, "booleans": ["Ícone","Ação"], "texts": ["Título","Descrição","Rótulo ação"], "_note": "composite/pattern — sem UEmpty no @nuxt/ui" }
   ]
 }

@@ -28,6 +28,8 @@
     "Radio": "No @nuxt/ui o componente é RadioGroup (variant card/list/table, size xs-xl, color, orientation) — revisar manualmente",
     "Search": "Não é componente do @nuxt/ui (é Input type=search ou InputMenu) — revisar manualmente",
     "MenuItem": "Interno de Select/DropdownMenu — não é componente público",
-    "SectionHeader": "Composite/pattern (USeparator + UButton) — sem componente único no @nuxt/ui; paridade não se aplica"
+    "SectionHeader": "Composite/pattern (USeparator + UButton) — sem componente único no @nuxt/ui; paridade não se aplica",
+    "Skeleton": "USkeleton é bloco dimensionado por classe; sem variant/size/color. shape (line/circle/block) é convenção do DS no Figma",
+    "EmptyState": "Composite/pattern (ícone+título+descrição+UButton) — sem UEmpty no @nuxt/ui"
   }
 }
