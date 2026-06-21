@@ -2,7 +2,7 @@
 
 Gerado a partir de `figma-sets.json` (2026-06-21) × `code-props.json` (2026-06-21).
 
-**Resumo:** 🔴 0 · 🟡 0 · 🔵 28 · ⚪ 3
+**Resumo:** 🔴 0 · 🟡 0 · 🔵 30 · ⚪ 3
 
 | Sev | Componente | Eixo | Achado |
 |-----|-----------|------|--------|
@@ -27,6 +27,8 @@ Gerado a partir de `figma-sets.json` (2026-06-21) × `code-props.json` (2026-06-
 | 🔵 LOW | Select | variant | 'none' (campo sem chrome) não modelado no Figma — por design |
 | 🔵 LOW | Select | size | 'xs', 'xl' fora da escala oficial (3 sizes) — por design |
 | 🔵 LOW | Select | color | código expõe color (7 opções) mas o Figma não modela cor como propriedade (provável: cor via estado) — por design? |
+| 🔵 LOW | Separator | size | single-size por design — escala oficial é sm/md/lg, não aplicada a este componente |
+| 🔵 LOW | Separator | color | código expõe color (7 opções) mas o Figma não modela cor como propriedade (provável: cor via estado) — por design? |
 | 🔵 LOW | Slider | size | single-size por design — escala oficial é sm/md/lg, não aplicada a este componente |
 | 🔵 LOW | Slider | color | código expõe color (7 opções) mas o Figma não modela cor como propriedade (provável: cor via estado) — por design? |
 | 🔵 LOW | Switch | size | 'xs', 'xl' fora da escala oficial (3 sizes) — por design |
