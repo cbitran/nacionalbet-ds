@@ -19,6 +19,7 @@
     { "name": "InputNumber", "variants": { "variant": ["outline","soft","subtle","ghost"], "state": ["default","focus","error","disabled"], "size": ["sm","md","lg"] } },
     { "name": "PinInput", "variants": { "variant": ["outline","soft","subtle","ghost"], "state": ["default","focus","error","disabled"], "size": ["sm","md","lg"] } },
     { "name": "InputDate", "variants": { "variant": ["outline","soft","subtle","ghost"], "state": ["default","focus","error","disabled"], "size": ["sm","md","lg"] } },
-    { "name": "FileUpload", "variants": { "variant": ["area","button"], "state": ["default","dragging","error","disabled"], "size": ["sm","md","lg"] } }
+    { "name": "FileUpload", "variants": { "variant": ["area","button"], "state": ["default","dragging","error","disabled"], "size": ["sm","md","lg"] } },
+    { "name": "Card", "variants": { "variant": ["outline","soft","subtle","solid"] } }
   ]
 }

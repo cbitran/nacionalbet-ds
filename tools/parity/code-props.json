@@ -16,7 +16,8 @@
     "Slider":      { "size": ["xs","sm","md","lg","xl"], "color": ["primary","secondary","success","info","warning","error","neutral"] },
     "FormField":   { "size": ["xs","sm","md","lg","xl"] },
     "Modal":       { "_note": "Sem prop size/variant/color no @nuxt/ui — largura via ui/class. As sizes sm/md/lg no Figma são presets de largura do DS." },
-    "Accordion":   { "_note": "Sem variant/size/color (baseado em items)." }
+    "Accordion":   { "_note": "Sem variant/size/color (baseado em items)." },
+    "Card":        { "variant": ["solid","outline","soft","subtle"], "_note": "Sem size/color — single-size; cor via variant." }
   },
   "skip": {
     "Radio": "No @nuxt/ui o componente é RadioGroup (variant card/list/table, size xs-xl, color, orientation) — revisar manualmente",
