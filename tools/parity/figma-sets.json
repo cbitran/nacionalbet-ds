@@ -24,6 +24,8 @@
     { "name": "Separator", "variants": { "orientation": ["horizontal","vertical"] }, "booleans": ["Label","Ícone"], "texts": ["Texto"], "_note": "conteúdo via boolean (Label/Ícone) — linha fecha quando off; itemSpacing 0, gap pelo padding do conteúdo" },
     { "name": "SectionHeader", "variants": { "position": ["start","center","end"] }, "booleans": ["Mostrar ‹","Mostrar ›"], "instanceSwaps": ["Seta ‹","Ação","Seta ›"], "_note": "composite/pattern (USeparator + UButton) — setas/botão via instance-swap; sem equivalente único no @nuxt/ui" },
     { "name": "Chip", "variants": { "color": ["primary","secondary","success","info","warning","error","neutral"] }, "booleans": ["Texto"], "texts": ["Número"] },
-    { "name": "Alert", "variants": { "variant": ["solid","outline","soft","subtle"], "color": ["primary","secondary","success","info","warning","error","neutral"] }, "booleans": ["Ícone","Fechar","Descrição"], "texts": ["Título","Texto descrição"] }
+    { "name": "Alert", "variants": { "variant": ["solid","outline","soft","subtle"], "color": ["primary","secondary","success","info","warning","error","neutral"] }, "booleans": ["Ícone","Fechar","Descrição"], "texts": ["Título","Texto descrição"] },
+    { "name": "Avatar", "variants": { "color": ["primary","secondary","success","info","warning","error","neutral"], "size": ["sm","md","lg"] }, "booleans": ["Imagem"], "texts": ["Iniciais"] },
+    { "name": "Progress", "variants": { "color": ["primary","secondary","success","info","warning","error","neutral"], "size": ["sm","md","lg"] } }
   ]
 }

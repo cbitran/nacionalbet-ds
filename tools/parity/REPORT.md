@@ -2,10 +2,11 @@
 
 Gerado a partir de `figma-sets.json` (2026-06-21) × `code-props.json` (2026-06-21).
 
-**Resumo:** 🔴 0 · 🟡 0 · 🔵 31 · ⚪ 4
+**Resumo:** 🔴 0 · 🟡 0 · 🔵 33 · ⚪ 4
 
 | Sev | Componente | Eixo | Achado |
 |-----|-----------|------|--------|
+| 🔵 LOW | Avatar | size | '3xs', '2xs', 'xs', 'xl', '2xl', '3xl' fora da escala oficial (3 sizes) — por design |
 | 🔵 LOW | Badge | size | 'xs', 'xl' fora da escala oficial (3 sizes) — por design |
 | 🔵 LOW | Checkbox | size | single-size por design — escala oficial é sm/md/lg, não aplicada a este componente |
 | 🔵 LOW | Checkbox | color | código expõe color (7 opções) mas o Figma não modela cor como propriedade (provável: cor via estado) — por design? |
@@ -25,6 +26,7 @@ Gerado a partir de `figma-sets.json` (2026-06-21) × `code-props.json` (2026-06-
 | 🔵 LOW | PinInput | variant | 'none' (campo sem chrome) não modelado no Figma — por design |
 | 🔵 LOW | PinInput | size | 'xs', 'xl' fora da escala oficial (3 sizes) — por design |
 | 🔵 LOW | PinInput | color | código expõe color (7 opções) mas o Figma não modela cor como propriedade (provável: cor via estado) — por design? |
+| 🔵 LOW | Progress | size | 'xs', 'xl' fora da escala oficial (3 sizes) — por design |
 | 🔵 LOW | Select | variant | 'none' (campo sem chrome) não modelado no Figma — por design |
 | 🔵 LOW | Select | size | 'xs', 'xl' fora da escala oficial (3 sizes) — por design |
 | 🔵 LOW | Select | color | código expõe color (7 opções) mas o Figma não modela cor como propriedade (provável: cor via estado) — por design? |
