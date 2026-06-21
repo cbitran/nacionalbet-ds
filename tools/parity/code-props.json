@@ -23,7 +23,8 @@
     "Alert":       { "variant": ["solid","outline","soft","subtle"], "color": ["primary","secondary","success","info","warning","error","neutral"] },
     "Avatar":      { "color": ["primary","secondary","success","info","warning","error","neutral"], "size": ["3xs","2xs","xs","sm","md","lg","xl","2xl","3xl"] },
     "Progress":    { "color": ["primary","secondary","success","info","warning","error","neutral"], "size": ["xs","sm","md","lg","xl"] },
-    "Toast":       { "variant": ["solid","outline","soft","subtle"], "color": ["primary","secondary","success","info","warning","error","neutral"] }
+    "Toast":       { "variant": ["solid","outline","soft","subtle"], "color": ["primary","secondary","success","info","warning","error","neutral"] },
+    "Tabs":        { "variant": ["pill","link"], "color": ["primary","secondary","success","info","warning","error","neutral"], "size": ["xs","sm","md","lg","xl"], "_note": "variant=pill/link no Figma; color/size via prop" }
   },
   "skip": {
     "Radio": "No @nuxt/ui o componente é RadioGroup (variant card/list/table, size xs-xl, color, orientation) — revisar manualmente",
@@ -34,6 +35,7 @@
     "EmptyState": "Composite/pattern (ícone+título+descrição+UButton) — sem UEmpty no @nuxt/ui",
     "Tooltip": "UTooltip: text/kbds/arrow/position — sem variant/size/color; bolha única no Figma",
     "DropdownMenu": "UDropdownMenu: painel dirigido por `items`; estados de item modelados no painel do Figma (sem variant/size/color de set)",
-    "Drawer": "UDrawer: overlay com `direction`; painel modelado no Figma (sem variant/size/color)"
+    "Drawer": "UDrawer: overlay com `direction`; painel modelado no Figma (sem variant/size/color)",
+    "Pagination": "UPagination: barra dirigida por total/items-per-page; representada como 1 componente no Figma"
   }
 }

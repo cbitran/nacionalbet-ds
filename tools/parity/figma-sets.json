@@ -32,6 +32,8 @@
     { "name": "Tooltip", "variants": {}, "booleans": ["Seta","Atalho"], "texts": ["Texto"] },
     { "name": "Toast", "variants": { "variant": ["solid","outline","soft","subtle"], "color": ["primary","secondary","success","info","warning","error","neutral"] }, "booleans": ["Ícone","Fechar"], "texts": ["Título","Texto descrição"] },
     { "name": "DropdownMenu", "variants": {}, "_note": "painel aberto com itens (default/highlighted/danger), separador, atalho" },
-    { "name": "Drawer", "variants": {}, "booleans": ["Handle"], "texts": ["Título"], "_note": "bottom-sheet (handle+header+conteúdo)" }
+    { "name": "Drawer", "variants": {}, "booleans": ["Handle"], "texts": ["Título"], "_note": "bottom-sheet (handle+header+conteúdo)" },
+    { "name": "Tabs", "variants": { "variant": ["pill","link"] }, "_note": "color/size via prop" },
+    { "name": "Pagination", "variants": {}, "_note": "barra representativa (prev/números/ativa/ellipsis/next)" }
   ]
 }

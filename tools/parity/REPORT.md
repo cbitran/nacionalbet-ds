@@ -2,7 +2,7 @@
 
 Gerado a partir de `figma-sets.json` (2026-06-21) × `code-props.json` (2026-06-21).
 
-**Resumo:** 🔴 0 · 🟡 0 · 🔵 33 · ⚪ 9
+**Resumo:** 🔴 0 · 🟡 0 · 🔵 35 · ⚪ 10
 
 | Sev | Componente | Eixo | Achado |
 |-----|-----------|------|--------|
@@ -36,6 +36,8 @@ Gerado a partir de `figma-sets.json` (2026-06-21) × `code-props.json` (2026-06-
 | 🔵 LOW | Slider | color | código expõe color (7 opções) mas o Figma não modela cor como propriedade (provável: cor via estado) — por design? |
 | 🔵 LOW | Switch | size | 'xs', 'xl' fora da escala oficial (3 sizes) — por design |
 | 🔵 LOW | Switch | color | código expõe color (7 opções) mas o Figma não modela cor como propriedade (provável: cor via estado) — por design? |
+| 🔵 LOW | Tabs | size | single-size por design — escala oficial é sm/md/lg, não aplicada a este componente |
+| 🔵 LOW | Tabs | color | código expõe color (7 opções) mas o Figma não modela cor como propriedade (provável: cor via estado) — por design? |
 | 🔵 LOW | Textarea | variant | 'none' (campo sem chrome) não modelado no Figma — por design |
 | 🔵 LOW | Textarea | size | 'xs', 'xl' fora da escala oficial (3 sizes) — por design |
 | 🔵 LOW | Textarea | color | código expõe color (7 opções) mas o Figma não modela cor como propriedade (provável: cor via estado) — por design? |
@@ -43,6 +45,7 @@ Gerado a partir de `figma-sets.json` (2026-06-21) × `code-props.json` (2026-06-
 | ⚪ INFO | DropdownMenu | - | pulado: UDropdownMenu: painel dirigido por `items`; estados de item modelados no painel do Figma (sem variant/size/color de set) |
 | ⚪ INFO | EmptyState | - | pulado: Composite/pattern (ícone+título+descrição+UButton) — sem UEmpty no @nuxt/ui |
 | ⚪ INFO | MenuItem | - | pulado: Interno de Select/DropdownMenu — não é componente público |
+| ⚪ INFO | Pagination | - | pulado: UPagination: barra dirigida por total/items-per-page; representada como 1 componente no Figma |
 | ⚪ INFO | Radio | - | pulado: No @nuxt/ui o componente é RadioGroup (variant card/list/table, size xs-xl, color, orientation) — revisar manualmente |
 | ⚪ INFO | Search | - | pulado: Não é componente do @nuxt/ui (é Input type=search ou InputMenu) — revisar manualmente |
 | ⚪ INFO | SectionHeader | - | pulado: Composite/pattern (USeparator + UButton) — sem componente único no @nuxt/ui; paridade não se aplica |
