@@ -152,7 +152,7 @@
   --ui-text-highlighted: var(--color-electric-50);         /* destaque / heading        */
   --ui-text-muted:      var(--color-navy-100);             /* texto secundário          */
   --ui-text-toned:      var(--color-navy-200);             /* texto terciário           */
-  --ui-text-dimmed:     var(--color-navy-300);             /* placeholder, hint         */
+  --ui-text-dimmed:     #5E7CA4;                            /* placeholder, hint — clareado de navy-300 (#4D6B9A reprovava: 3.2 no bg / 2.62 no card). Passa AA-Large: 4.03 bg / 3.30 card */
   --ui-text-inverted:   var(--color-navy-900);             /* texto sobre fundo claro   */
 
   /* ── Bordas (espelho de border/* no Figma) ── */

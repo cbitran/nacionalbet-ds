@@ -1,0 +1,26 @@
+{
+  "_comment": "Enums reais do @nuxt/ui v4 (variant/size/color) por componente. Fonte: nuxt-ui MCP get-component-metadata. Regenerar via README.md.",
+  "generatedAt": "2026-06-21",
+  "components": {
+    "Button":      { "variant": ["solid","outline","soft","subtle","ghost","link"], "size": ["xs","sm","md","lg","xl"], "color": ["primary","secondary","success","info","warning","error","neutral"] },
+    "Badge":       { "variant": ["solid","outline","soft","subtle"], "size": ["xs","sm","md","lg","xl"], "color": ["primary","secondary","success","info","warning","error","neutral"] },
+    "Checkbox":    { "variant": ["card","list"], "size": ["xs","sm","md","lg","xl"], "color": ["primary","secondary","success","info","warning","error","neutral"] },
+    "Input":       { "variant": ["outline","soft","subtle","ghost","none"], "size": ["xs","sm","md","lg","xl"], "color": ["primary","secondary","success","info","warning","error","neutral"] },
+    "Select":      { "variant": ["outline","soft","subtle","ghost","none"], "size": ["xs","sm","md","lg","xl"], "color": ["primary","secondary","success","info","warning","error","neutral"] },
+    "Textarea":    { "variant": ["outline","soft","subtle","ghost","none"], "size": ["xs","sm","md","lg","xl"], "color": ["primary","secondary","success","info","warning","error","neutral"] },
+    "InputNumber": { "variant": ["outline","soft","subtle","ghost","none"], "size": ["xs","sm","md","lg","xl"], "color": ["primary","secondary","success","info","warning","error","neutral"] },
+    "PinInput":    { "variant": ["outline","soft","subtle","ghost","none"], "size": ["xs","sm","md","lg","xl"], "color": ["primary","secondary","success","info","warning","error","neutral"] },
+    "InputDate":   { "variant": ["outline","soft","subtle","ghost","none"], "size": ["xs","sm","md","lg","xl"], "color": ["primary","secondary","success","info","warning","error","neutral"], "_note": "UInputDate compartilha a casca do Input (assumido)" },
+    "FileUpload":  { "variant": ["area","button"], "size": ["xs","sm","md","lg","xl"], "color": ["primary","secondary","success","info","warning","error","neutral"] },
+    "Switch":      { "size": ["xs","sm","md","lg","xl"], "color": ["primary","secondary","success","info","warning","error","neutral"] },
+    "Slider":      { "size": ["xs","sm","md","lg","xl"], "color": ["primary","secondary","success","info","warning","error","neutral"] },
+    "FormField":   { "size": ["xs","sm","md","lg","xl"] },
+    "Modal":       { "_note": "Sem prop size/variant/color no @nuxt/ui — largura via ui/class. As sizes sm/md/lg no Figma são presets de largura do DS." },
+    "Accordion":   { "_note": "Sem variant/size/color (baseado em items)." }
+  },
+  "skip": {
+    "Radio": "No @nuxt/ui o componente é RadioGroup (variant card/list/table, size xs-xl, color, orientation) — revisar manualmente",
+    "Search": "Não é componente do @nuxt/ui (é Input type=search ou InputMenu) — revisar manualmente",
+    "MenuItem": "Interno de Select/DropdownMenu — não é componente público"
+  }
+}

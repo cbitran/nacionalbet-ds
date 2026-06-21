@@ -1,0 +1,24 @@
+{
+  "_comment": "Snapshot das variant properties de cada Component Set no Figma (DS Theme v5). Regenerar via figma-console: ver README.md.",
+  "generatedAt": "2026-06-21",
+  "sets": [
+    { "name": "Button", "variants": { "variant": ["solid","outline","soft","subtle","ghost","link"], "color": ["primary","secondary","success","info","warning","error","neutral"], "size": ["xs","sm","md","lg","xl"], "state": ["default","disabled"], "shape": ["rectangular","pill","circular"] } },
+    { "name": "Badge", "variants": { "variant": ["solid","outline","soft","subtle"], "color": ["primary","secondary","success","info","warning","error","neutral"], "size": ["sm","md","lg"] } },
+    { "name": "Checkbox", "variants": { "state": ["unchecked","checked","indeterminate"] } },
+    { "name": "Radio", "variants": { "state": ["off","on"] } },
+    { "name": "Input", "variants": { "variant": ["outline","soft","subtle","ghost"], "state": ["default","focus","error","disabled"], "size": ["sm","md","lg"] } },
+    { "name": "Modal", "variants": { "size": ["sm","md","lg"] } },
+    { "name": "FormField", "variants": { "state": ["default","error"] } },
+    { "name": "Switch", "variants": { "state": ["off","on"], "size": ["md","lg"] } },
+    { "name": "Select", "variants": { "variant": ["outline","soft","subtle","ghost"], "state": ["default","focus","error","disabled"], "size": ["sm","md","lg"] } },
+    { "name": "MenuItem", "variants": { "state": ["default","hover","selected"] } },
+    { "name": "Slider", "variants": { "state": ["default","disabled"] } },
+    { "name": "Accordion", "variants": { "state": ["collapsed","expanded"] } },
+    { "name": "Search", "variants": { "state": ["default","focus"], "size": ["sm","md","lg"] } },
+    { "name": "Textarea", "variants": { "variant": ["outline","soft","subtle","ghost"], "state": ["default","focus","error","disabled"], "size": ["sm","md","lg"] } },
+    { "name": "InputNumber", "variants": { "variant": ["outline","soft","subtle","ghost"], "state": ["default","focus","error","disabled"], "size": ["sm","md","lg"] } },
+    { "name": "PinInput", "variants": { "variant": ["outline","soft","subtle","ghost"], "state": ["default","focus","error","disabled"], "size": ["sm","md","lg"] } },
+    { "name": "InputDate", "variants": { "variant": ["outline","soft","subtle","ghost"], "state": ["default","focus","error","disabled"], "size": ["sm","md","lg"] } },
+    { "name": "FileUpload", "variants": { "variant": ["area","button"], "state": ["default","dragging","error","disabled"], "size": ["sm","md","lg"] } }
+  ]
+}
