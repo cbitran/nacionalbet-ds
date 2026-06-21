@@ -2,7 +2,7 @@
 
 Gerado a partir de `figma-sets.json` (2026-06-21) × `code-props.json` (2026-06-21).
 
-**Resumo:** 🔴 0 · 🟡 0 · 🔵 33 · ⚪ 7
+**Resumo:** 🔴 0 · 🟡 0 · 🔵 33 · ⚪ 9
 
 | Sev | Componente | Eixo | Achado |
 |-----|-----------|------|--------|
@@ -39,6 +39,8 @@ Gerado a partir de `figma-sets.json` (2026-06-21) × `code-props.json` (2026-06-
 | 🔵 LOW | Textarea | variant | 'none' (campo sem chrome) não modelado no Figma — por design |
 | 🔵 LOW | Textarea | size | 'xs', 'xl' fora da escala oficial (3 sizes) — por design |
 | 🔵 LOW | Textarea | color | código expõe color (7 opções) mas o Figma não modela cor como propriedade (provável: cor via estado) — por design? |
+| ⚪ INFO | Drawer | - | pulado: UDrawer: overlay com `direction`; painel modelado no Figma (sem variant/size/color) |
+| ⚪ INFO | DropdownMenu | - | pulado: UDropdownMenu: painel dirigido por `items`; estados de item modelados no painel do Figma (sem variant/size/color de set) |
 | ⚪ INFO | EmptyState | - | pulado: Composite/pattern (ícone+título+descrição+UButton) — sem UEmpty no @nuxt/ui |
 | ⚪ INFO | MenuItem | - | pulado: Interno de Select/DropdownMenu — não é componente público |
 | ⚪ INFO | Radio | - | pulado: No @nuxt/ui o componente é RadioGroup (variant card/list/table, size xs-xl, color, orientation) — revisar manualmente |

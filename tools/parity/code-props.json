@@ -32,6 +32,8 @@
     "SectionHeader": "Composite/pattern (USeparator + UButton) — sem componente único no @nuxt/ui; paridade não se aplica",
     "Skeleton": "USkeleton é bloco dimensionado por classe; sem variant/size/color. shape (line/circle/block) é convenção do DS no Figma",
     "EmptyState": "Composite/pattern (ícone+título+descrição+UButton) — sem UEmpty no @nuxt/ui",
-    "Tooltip": "UTooltip: text/kbds/arrow/position — sem variant/size/color; bolha única no Figma"
+    "Tooltip": "UTooltip: text/kbds/arrow/position — sem variant/size/color; bolha única no Figma",
+    "DropdownMenu": "UDropdownMenu: painel dirigido por `items`; estados de item modelados no painel do Figma (sem variant/size/color de set)",
+    "Drawer": "UDrawer: overlay com `direction`; painel modelado no Figma (sem variant/size/color)"
   }
 }
