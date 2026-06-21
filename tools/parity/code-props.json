@@ -18,7 +18,9 @@
     "Modal":       { "_note": "Sem prop size/variant/color no @nuxt/ui — largura via ui/class. As sizes sm/md/lg no Figma são presets de largura do DS." },
     "Accordion":   { "_note": "Sem variant/size/color (baseado em items)." },
     "Card":        { "variant": ["solid","outline","soft","subtle"], "_note": "Sem size/color — single-size; cor via variant." },
-    "Separator":   { "color": ["error","neutral","primary","secondary","success","info","warning"], "size": ["xs","sm","md","lg","xl"], "_note": "orientation/content/type/position modelados como variant no Figma; color/size via override (por design)." }
+    "Separator":   { "color": ["error","neutral","primary","secondary","success","info","warning"], "size": ["xs","sm","md","lg","xl"], "_note": "orientation/content/type/position modelados como variant no Figma; color/size via override (por design)." },
+    "Chip":        { "color": ["primary","secondary","success","info","warning","error","neutral"], "size": ["3xs","2xs","xs","sm","md","lg","xl","2xl","3xl"], "_note": "color=variant no Figma; size single (dot) por design." },
+    "Alert":       { "variant": ["solid","outline","soft","subtle"], "color": ["primary","secondary","success","info","warning","error","neutral"] }
   },
   "skip": {
     "Radio": "No @nuxt/ui o componente é RadioGroup (variant card/list/table, size xs-xl, color, orientation) — revisar manualmente",
