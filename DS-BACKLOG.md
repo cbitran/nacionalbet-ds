@@ -22,12 +22,13 @@
 ## P1 — Alto valor (muito usados no produto)
 | Componente | Categoria | Nota |
 |---|---|---|
-| Card | element | cards de jogo/evento, blocos |
+| ✅ Card | element | FEITO (Figma 4 variants + story GameCard) — cards de jogo/evento, blocos |
 | Chip | element | odds, contadores, status |
 | Avatar (+Group) | element | perfil, times |
 | Progress | element | limites, barras de tempo |
 | Alert | element | avisos, mensagens de sistema |
-| Separator | element | divisórias |
+| ✅ Separator | element | FEITO (horizontal/vertical, conteúdo via boolean Label/Ícone — linha fecha no off) — divisórias |
+| ✅ SectionHeader | pattern | FEITO (composite: linha + cluster ‹ Ver todos › via instance-swap, position start/center/end) — cabeçalho de carrossel |
 | Skeleton | element | loading de listas/cards |
 | Toast | overlay | feedback de ações (aposta feita, erro) |
 | Tooltip | overlay | dicas, info de odds |

@@ -24,6 +24,15 @@
   "fontSizeVars": [
     "font-size-xs","font-size-sm","font-size-base","font-size-md","font-size-lg","font-size-xl","font-size-2xl","font-size-3xl","font-size-4xl","font-size-5xl","font-size-6xl","font-size-7xl","font-size-8xl","font-size-9xl"
   ],
+  "leadingVars": [
+    "font-leading-xs","font-leading-sm","font-leading-base","font-leading-md","font-leading-lg","font-leading-xl","font-leading-2xl","font-leading-3xl","font-leading-4xl","font-leading-5xl"
+  ],
+  "gridStyles": [
+    "Grid/xs · 390px · 4 col · gut 16","Grid/sm · 640px · 4 col · gut 16","Grid/md · 768px · 8 col · gut 24","Grid/lg · 1024px · 12 col · gut 24","Grid/xl · 1280px · 12 col · gut 24","Grid/2xl · 1440px · 12 col · cont 1280"
+  ],
+  "colorPaletteVars": [
+    "palette/navy","palette/electric","palette/green","palette/yellow","palette/red","palette/purple","palette/zinc","palette/blue","palette/orange"
+  ],
   "textStyleWeights": ["regular","medium","semibold","bold","extrabold"],
   "typeScaleVars": [
     "font/display-size","font/display-lh","font/h1-size","font/h1-lh","font/h2-size","font/h2-lh","font/h3-size","font/h3-lh","font/title-size","font/title-lh","font/body-size","font/body-lh","font/small-size","font/small-lh","font/caption-size","font/caption-lh"

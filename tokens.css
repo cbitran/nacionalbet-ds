@@ -426,6 +426,7 @@
   --leading-2xl:  36px;
   --leading-3xl:  40px;
   --leading-4xl:  48px;
+  --leading-5xl:  64px;
 
   /* Letter spacing */
   --tracking-tight:  -0.02em;
@@ -482,6 +483,21 @@
   --radius-2xl:   16px;
   --radius-3xl:   24px;
   --radius-full:  9999px;
+}
+
+/* ============================================================
+   6.6 BREAKPOINTS — espelho dos Grid Styles do Figma (Grid/xs…2xl)
+   Tailwind v4 lê --breakpoint-* (gera os prefixos sm: md: lg: xl: 2xl:).
+   xs (390) é custom do DS; 2xl sobrescreve o default 1536 → 1440.
+   ============================================================ */
+
+@theme {
+  --breakpoint-xs:  390px;   /* menor mobile (Grid/xs · 4 col) */
+  --breakpoint-sm:  640px;   /* Grid/sm · 4 col */
+  --breakpoint-md:  768px;   /* Grid/md · 8 col */
+  --breakpoint-lg:  1024px;  /* Grid/lg · 12 col — troca da tipografia responsiva */
+  --breakpoint-xl:  1280px;  /* Grid/xl · 12 col */
+  --breakpoint-2xl: 1440px;  /* Grid/2xl · 12 col · container 1280 */
 }
 
 /* ============================================================

@@ -1,12 +1,15 @@
 #!/usr/bin/env node
 // ─────────────────────────────────────────────────────────────
 // Harness de PARIDADE de FOUNDATIONS — tokens.css ↔ Figma (bidirecional).
-// Diretriz do DS: tudo que está no CSS tem de estar no Figma e vice-versa.
-// Famílias: shadow, glow, blur, radius, spacing, gradient, text-size, weight.
+// Diretriz do DS: tudo no CSS tem de estar no Figma e vice-versa.
 //
-// Lê tokens.css AO VIVO + figma-styles.json (snapshot do Figma).
-// Uso: node tools/parity/audit-foundations.mjs [--md]
-// exit 1 se houver divergência (fora as by-design).
+// REGISTRO EXAUSTIVO: toda família de token é listada aqui com um status —
+//   'check'     → diff CSS↔Figma
+//   'code-only' → existe só no CSS por design (Figma não tem primitivo)
+//   'manual'    → coberto, mas o diff automático não se aplica (nomes divergem)
+// Assim nada fica fora silenciosamente conforme o DS cresce.
+//
+// Lê tokens.css AO VIVO + figma-styles.json (snapshot). Uso: [--md]. exit 1 se divergência real.
 // ─────────────────────────────────────────────────────────────
 import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
@@ -18,79 +21,72 @@ const fig = JSON.parse(readFileSync(join(here, 'figma-styles.json'), 'utf8'))
 const asMd = process.argv.includes('--md')
 
 const uniq = (a) => [...new Set(a)]
-const matchAll = (re) => uniq([...css.matchAll(re)].map((m) => m[1]))
-const leaves = (arr, prefix) => arr.filter((s) => s.startsWith(prefix)).map((s) => s.slice(prefix.length))
+const cssLeaves = (re) => uniq([...css.matchAll(re)].map((m) => m[1]))
+const strip = (arr, p) => arr.filter((s) => s.startsWith(p)).map((s) => s.slice(p.length))
 
-// ── Extrair CSS (por família) ──
-const cssF = {
-  shadow: matchAll(/--shadow-(?!glow)([a-z0-9]+)\s*:/g),
-  glow: matchAll(/--shadow-glow-([a-z0-9]+)\s*:/g),
-  blur: matchAll(/--blur-([a-z0-9]+)\s*:/g),
-  radius: matchAll(/--radius-([a-z0-9]+)\s*:/g),
-  spacing: matchAll(/--spacing-([a-z0-9-]+)\s*:/g),
-  gradient: matchAll(/--gradient-([a-z0-9]+)\s*:/g),
-  textSize: matchAll(/--text-([a-z0-9]+)\s*:/g),
-  weight: matchAll(/--font-weight-([a-z0-9]+)\s*:/g),
-}
-
-// ── Extrair Figma (por família) ──
-const figF = {
-  shadow: leaves(fig.effectStyles, 'nacional.bet/shadow/'),
-  glow: leaves(fig.effectStyles, 'nacional.bet/glow/'),
-  blur: leaves(fig.effectStyles, 'nacional.bet/blur/'),
-  radius: fig.radiusVars.map((v) => v.replace(/^radius-/, '')),
-  spacing: fig.spacingVars.map((v) => v.replace(/^space-/, '')),
-  gradient: leaves(fig.paintStyles, 'gradient/'),
-  textSize: fig.fontSizeVars.map((v) => v.replace(/^font-size-/, '')),
-  weight: fig.textStyleWeights,
-}
-
-// ── By-design (não é divergência): documentar a decisão ──
-const IGNORE = {
-  // half-steps existem só no CSS p/ compat Tailwind; removidos do Figma de propósito (grade-4)
-  spacing: { cssOnly: ['0-5', '1-5', '2-5', '3-5'], figmaOnly: [] },
-  // radius-default (6px) = alias do md no Figma; CSS usa md.
-  radius: { cssOnly: [], figmaOnly: ['default'] },
-  // 7xl–9xl vêm do default do Tailwind v4 (não redefinidos no tokens.css, mas existem no CSS compilado).
-  textSize: { cssOnly: [], figmaOnly: ['7xl', '8xl', '9xl'] },
-}
-
-const FAMILIES = [
-  { key: 'shadow', label: 'Sombra (effect)' },
-  { key: 'glow', label: 'Glow (effect)' },
-  { key: 'blur', label: 'Blur (effect)' },
-  { key: 'radius', label: 'Radius' },
-  { key: 'spacing', label: 'Spacing' },
-  { key: 'gradient', label: 'Gradient' },
-  { key: 'textSize', label: 'Tamanho de fonte' },
-  { key: 'weight', label: 'Peso de fonte' },
+// ── REGISTRO DE FAMÍLIAS ──
+const REGISTRY = [
+  { key: 'shadow', label: 'Sombra (effect)', status: 'check',
+    css: () => cssLeaves(/--shadow-(?!glow)([a-z0-9]+)\s*:/g), figma: () => strip(fig.effectStyles, 'nacional.bet/shadow/') },
+  { key: 'glow', label: 'Glow (effect)', status: 'check',
+    css: () => cssLeaves(/--shadow-glow-([a-z0-9]+)\s*:/g), figma: () => strip(fig.effectStyles, 'nacional.bet/glow/') },
+  { key: 'blur', label: 'Blur (effect)', status: 'check',
+    css: () => cssLeaves(/--blur-([a-z0-9]+)\s*:/g), figma: () => strip(fig.effectStyles, 'nacional.bet/blur/') },
+  { key: 'radius', label: 'Radius', status: 'check',
+    css: () => cssLeaves(/--radius-([a-z0-9]+)\s*:/g), figma: () => fig.radiusVars.map((v) => v.replace(/^radius-/, '')),
+    ignore: { figmaOnly: ['default'] } },
+  { key: 'spacing', label: 'Spacing', status: 'check',
+    css: () => cssLeaves(/--spacing-([a-z0-9-]+)\s*:/g), figma: () => fig.spacingVars.map((v) => v.replace(/^space-/, '')),
+    ignore: { cssOnly: ['0-5', '1-5', '2-5', '3-5'] } },
+  { key: 'breakpoint', label: 'Breakpoint / Grid', status: 'check',
+    css: () => cssLeaves(/--breakpoint-([a-z0-9]+)\s*:/g), figma: () => uniq(fig.gridStyles.map((g) => (g.match(/Grid\/([a-z0-9]+)/) || [])[1]).filter(Boolean)) },
+  { key: 'gradient', label: 'Gradient', status: 'check',
+    css: () => cssLeaves(/--gradient-([a-z0-9]+)\s*:/g), figma: () => strip(fig.paintStyles, 'gradient/') },
+  { key: 'textSize', label: 'Tamanho de fonte', status: 'check',
+    css: () => cssLeaves(/--text-([a-z0-9]+)\s*:/g), figma: () => fig.fontSizeVars.map((v) => v.replace(/^font-size-/, '')),
+    ignore: { figmaOnly: ['7xl', '8xl', '9xl'] } }, // 7xl–9xl = default do Tailwind
+  { key: 'leading', label: 'Entrelinha (leading)', status: 'check',
+    css: () => cssLeaves(/--leading-([a-z0-9]+)\s*:/g), figma: () => strip(fig.leadingVars, 'font-leading-') },
+  { key: 'weight', label: 'Peso de fonte', status: 'check',
+    css: () => cssLeaves(/--font-weight-([a-z0-9]+)\s*:/g), figma: () => fig.textStyleWeights },
+  { key: 'colorPalette', label: 'Paleta de cor', status: 'check',
+    css: () => cssLeaves(/--color-([a-z]+)-\d/g), figma: () => strip(fig.colorPaletteVars, 'palette/'),
+    ignore: { figmaOnly: ['blue', 'orange'] } }, // blue/orange = default Tailwind + brand white-label alt
+  // ── Documentados (não diff) ──
+  { key: 'semanticColor', label: 'Cor semântica (--ui-*)', status: 'manual', note: 'coberto por Paint Styles + Colors vars; nomes divergem (--ui-primary ↔ color/primary) → conferência visual' },
+  { key: 'container', label: 'Container', status: 'manual', note: '--ui-container (1440) ↔ container-default / Grid 2xl' },
+  { key: 'tracking', label: 'Letter-spacing', status: 'code-only', note: 'Figma só aplica por text-style, não como token compartilhado' },
+  { key: 'motion', label: 'Motion (duration/ease)', status: 'code-only', note: 'Figma não tem primitivo de motion (variável/estilo)' },
 ]
 
 const findings = []
-for (const { key, label } of FAMILIES) {
-  const ign = IGNORE[key] || { cssOnly: [], figmaOnly: [] }
-  const inCssNotFigma = cssF[key].filter((x) => !figF[key].includes(x) && !ign.cssOnly.includes(x))
-  const inFigmaNotCss = figF[key].filter((x) => !cssF[key].includes(x) && !ign.figmaOnly.includes(x))
-  const ignored = [...ign.cssOnly, ...ign.figmaOnly].filter((x) => cssF[key].includes(x) || figF[key].includes(x))
-  if (inCssNotFigma.length) findings.push({ sev: 'MED', fam: label, dir: 'CSS→Figma', msg: `no CSS mas falta no Figma: ${inCssNotFigma.map((x) => `'${x}'`).join(', ')}` })
-  if (inFigmaNotCss.length) findings.push({ sev: 'MED', fam: label, dir: 'Figma→CSS', msg: `no Figma mas falta no CSS: ${inFigmaNotCss.map((x) => `'${x}'`).join(', ')}` })
-  if (ignored.length) findings.push({ sev: 'LOW', fam: label, dir: 'by-design', msg: `ignorado (decisão DS): ${ignored.map((x) => `'${x}'`).join(', ')}` })
+for (const fam of REGISTRY) {
+  if (fam.status !== 'check') { findings.push({ sev: 'DOC', fam: fam.label, dir: fam.status, msg: fam.note }); continue }
+  const ign = fam.ignore || { cssOnly: [], figmaOnly: [] }
+  const c = fam.css(), f = fam.figma()
+  const cNotF = c.filter((x) => !f.includes(x) && !(ign.cssOnly || []).includes(x))
+  const fNotC = f.filter((x) => !c.includes(x) && !(ign.figmaOnly || []).includes(x))
+  const ignored = [...(ign.cssOnly || []), ...(ign.figmaOnly || [])].filter((x) => c.includes(x) || f.includes(x))
+  if (cNotF.length) findings.push({ sev: 'MED', fam: fam.label, dir: 'CSS→Figma', msg: `no CSS mas falta no Figma: ${cNotF.map((x) => `'${x}'`).join(', ')}` })
+  if (fNotC.length) findings.push({ sev: 'MED', fam: fam.label, dir: 'Figma→CSS', msg: `no Figma mas falta no CSS: ${fNotC.map((x) => `'${x}'`).join(', ')}` })
+  if (ignored.length) findings.push({ sev: 'LOW', fam: fam.label, dir: 'by-design', msg: `ignorado: ${ignored.map((x) => `'${x}'`).join(', ')}` })
 }
 
-const order = { MED: 0, LOW: 1 }
+const order = { MED: 0, LOW: 1, DOC: 2 }
 findings.sort((a, b) => order[a.sev] - order[b.sev] || a.fam.localeCompare(b.fam))
 const counts = findings.reduce((m, f) => ((m[f.sev] = (m[f.sev] || 0) + 1), m), {})
-const icon = { MED: '🟡', LOW: '🔵' }
+const icon = { MED: '🟡', LOW: '🔵', DOC: '⚪' }
+const checked = REGISTRY.filter((f) => f.status === 'check').length
 
 if (asMd) {
-  const out = ['# Paridade de Foundations — tokens.css ↔ Figma', '', `Gerado de \`tokens.css\` (vivo) × \`figma-styles.json\` (${fig.generatedAt}).`, '', `**Resumo:** 🟡 ${counts.MED || 0} divergências · 🔵 ${counts.LOW || 0} by-design`, '', '| Sev | Família | Direção | Achado |', '|-----|---------|---------|--------|']
-  for (const f of findings) out.push(`| ${icon[f.sev]} | ${f.fam} | ${f.dir} | ${f.msg.replace(/\|/g, '\\|')} |`)
+  const out = ['# Paridade de Foundations — tokens.css ↔ Figma', '', `Gerado de \`tokens.css\` (vivo) × \`figma-styles.json\` (${fig.generatedAt}). ${checked} famílias checadas + ${REGISTRY.length - checked} documentadas.`, '', `**Resumo:** 🟡 ${counts.MED || 0} divergências · 🔵 ${counts.LOW || 0} by-design · ⚪ ${counts.DOC || 0} documentadas`, '', '| Sev | Família | Tipo | Detalhe |', '|-----|---------|------|---------|']
+  for (const f of findings) out.push(`| ${icon[f.sev]} | ${f.fam} | ${f.dir} | ${(f.msg || '').replace(/\|/g, '\\|')} |`)
   process.stdout.write(out.join('\n') + '\n')
 } else {
-  console.log('\n  PARIDADE DE FOUNDATIONS — tokens.css ↔ Figma\n  ' + '─'.repeat(52))
-  console.log(`  🟡 ${counts.MED || 0} divergências   🔵 ${counts.LOW || 0} by-design\n`)
-  for (const f of findings) console.log(`  ${icon[f.sev]} ${f.fam.padEnd(20)} ${f.dir.padEnd(11)} ${f.msg}`)
-  if (!(counts.MED)) console.log('  ✅ Sem divergências reais.')
+  console.log('\n  PARIDADE DE FOUNDATIONS — tokens.css ↔ Figma\n  ' + '─'.repeat(54))
+  console.log(`  ${checked} famílias checadas · 🟡 ${counts.MED || 0} divergências · 🔵 ${counts.LOW || 0} by-design · ⚪ ${counts.DOC || 0} doc\n`)
+  for (const f of findings) console.log(`  ${icon[f.sev]} ${f.fam.padEnd(24)} ${f.dir.padEnd(11)} ${f.msg || ''}`)
+  if (!counts.MED) console.log('\n  ✅ Sem divergências reais.')
   console.log('')
 }
 process.exit((counts.MED || 0) > 0 ? 1 : 0)
