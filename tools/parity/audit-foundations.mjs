@@ -72,6 +72,19 @@ for (const fam of REGISTRY) {
   if (ignored.length) findings.push({ sev: 'LOW', fam: fam.label, dir: 'by-design', msg: `ignorado: ${ignored.map((x) => `'${x}'`).join(', ')}` })
 }
 
+// ── Checagem de VALORES (não só nomes) — pega divergência tipo text-lg 20px(CSS) vs 18px(Figma) ──
+const cssValMap = (re) => Object.fromEntries([...css.matchAll(re)].map((m) => [m[1], Number(m[2])]))
+const valChecks = [
+  { label: 'Tamanho de fonte (valor)', css: cssValMap(/--text-([a-z0-9]+):\s*(\d+)px/g), fig: fig.fontSizeValues },
+  { label: 'Entrelinha (valor)', css: cssValMap(/--leading-([a-z0-9]+):\s*(\d+)px/g), fig: fig.leadingValues },
+]
+for (const vc of valChecks) {
+  if (!vc.fig) continue
+  const diffs = Object.keys(vc.css).filter((k) => vc.fig[k] !== undefined && vc.fig[k] !== vc.css[k])
+    .map((k) => `${k}: CSS ${vc.css[k]}px ≠ Figma ${vc.fig[k]}px`)
+  if (diffs.length) findings.push({ sev: 'MED', fam: vc.label, dir: 'valor', msg: diffs.join(' · ') })
+}
+
 const order = { MED: 0, LOW: 1, DOC: 2 }
 findings.sort((a, b) => order[a.sev] - order[b.sev] || a.fam.localeCompare(b.fam))
 const counts = findings.reduce((m, f) => ((m[f.sev] = (m[f.sev] || 0) + 1), m), {})

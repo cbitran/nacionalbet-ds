@@ -404,17 +404,18 @@
      line-height pareado (--text-*--line-height) p/ que `text-<size>` aplique
      tamanho + leading juntos, igual aos text styles do Figma.
      5xl/6xl não têm leading no DS → ~1.05 para display. */
+  /* Scale canônico NuxtUI/Tailwind (= text styles do Figma). md (17) é custom do DS. */
   --text-xs:   12px;  --text-xs--line-height:   16px;
   --text-sm:   14px;  --text-sm--line-height:   20px;
-  --text-base: 15px;  --text-base--line-height: 24px;
+  --text-base: 16px;  --text-base--line-height: 24px;
   --text-md:   17px;  --text-md--line-height:   28px;
-  --text-lg:   20px;  --text-lg--line-height:   28px;
-  --text-xl:   24px;  --text-xl--line-height:   32px;
-  --text-2xl:  30px;  --text-2xl--line-height:  36px;
-  --text-3xl:  36px;  --text-3xl--line-height:  40px;
-  --text-4xl:  48px;  --text-4xl--line-height:  48px;
-  --text-5xl:  60px;  --text-5xl--line-height:  64px;
-  --text-6xl:  72px;  --text-6xl--line-height:  76px;
+  --text-lg:   18px;  --text-lg--line-height:   28px;
+  --text-xl:   20px;  --text-xl--line-height:   28px;
+  --text-2xl:  24px;  --text-2xl--line-height:  32px;
+  --text-3xl:  30px;  --text-3xl--line-height:  36px;
+  --text-4xl:  36px;  --text-4xl--line-height:  40px;
+  --text-5xl:  48px;  --text-5xl--line-height:  48px;
+  --text-6xl:  60px;  --text-6xl--line-height:  60px;
 
   /* Line heights (utilities leading-* standalone) */
   --leading-xs:   16px;
@@ -422,11 +423,11 @@
   --leading-base: 24px;
   --leading-md:   28px;
   --leading-lg:   28px;
-  --leading-xl:   32px;
-  --leading-2xl:  36px;
-  --leading-3xl:  40px;
-  --leading-4xl:  48px;
-  --leading-5xl:  64px;
+  --leading-xl:   28px;
+  --leading-2xl:  32px;
+  --leading-3xl:  36px;
+  --leading-4xl:  40px;
+  --leading-5xl:  48px;
 
   /* Letter spacing */
   --tracking-tight:  -0.02em;
