@@ -20,6 +20,9 @@ const code = JSON.parse(readFileSync(join(here, 'code-props.json'), 'utf8'))
 const asMd = process.argv.includes('--md')
 
 const AXES = ['variant', 'size', 'color']
+// Escala de tamanho OFICIAL do DS (decisão 2026-06-21): só sm/md/lg.
+// xs/xl existem no @nuxt/ui mas são fora-de-escopo → 🔵 por design, não pendência.
+const DS_SIZES = ['sm', 'md', 'lg']
 const diff = (a = [], b = []) => a.filter((x) => !b.includes(x))
 
 const findings = [] // { sev, comp, axis, msg }
@@ -38,10 +41,22 @@ for (const set of figma.sets) {
     // código tem o eixo, Figma não modela como variant property
     if (codeOpts && !figmaOpts) {
       if (axis === 'color') add('LOW', name, 'color', `código expõe color (${codeOpts.length} opções) mas o Figma não modela cor como propriedade (provável: cor via estado) — por design?`)
+      else if (axis === 'size') add('LOW', name, 'size', `single-size por design — escala oficial é sm/md/lg, não aplicada a este componente`)
       else add('MED', name, axis, `código tem '${axis}' [${codeOpts.join(', ')}] mas não há propriedade '${axis}' no Figma`)
       continue
     }
     if (!codeOpts || !figmaOpts) continue
+
+    // SIZE: comparar contra a escala oficial (sm/md/lg), não contra o enum cru do @nuxt/ui.
+    if (axis === 'size') {
+      const missingOfficial = diff(DS_SIZES, figmaOpts)         // falta um tamanho oficial → corrigir
+      const outOfScope = diff(codeOpts, DS_SIZES).filter((x) => !figmaOpts.includes(x)) // xs/xl → por design
+      const invalid = diff(figmaOpts, codeOpts)                 // size no Figma que não existe no código
+      if (missingOfficial.length) add('MED', name, 'size', `falta tamanho oficial: ${missingOfficial.map((x) => `'${x}'`).join(', ')}  (figma=[${figmaOpts.join(', ')}])`)
+      if (outOfScope.length) add('LOW', name, 'size', `${outOfScope.map((x) => `'${x}'`).join(', ')} fora da escala oficial (3 sizes) — por design`)
+      if (invalid.length) add('HIGH', name, 'size', `no Figma mas NÃO existe no código: ${invalid.map((x) => `'${x}'`).join(', ')}`)
+      continue
+    }
 
     let missingInFigma = diff(codeOpts, figmaOpts) // existe no código, falta no Figma
     const extraInFigma = diff(figmaOpts, codeOpts)   // existe no Figma, não existe no código
