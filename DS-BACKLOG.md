@@ -23,22 +23,22 @@
 | Componente | Categoria | Nota |
 |---|---|---|
 | ✅ Card | element | FEITO (Figma 4 variants + story GameCard) — cards de jogo/evento, blocos |
-| Chip | element | odds, contadores, status |
-| Avatar (+Group) | element | perfil, times |
-| Progress | element | limites, barras de tempo |
-| Alert | element | avisos, mensagens de sistema |
+| ✅ Chip | element | odds, contadores, status |
+| ✅ Avatar (+Group) | element | perfil, times |
+| ✅ Progress | element | limites, barras de tempo |
+| ✅ Alert | element | avisos, mensagens de sistema |
 | ✅ Separator | element | FEITO (horizontal/vertical, conteúdo via boolean Label/Ícone — linha fecha no off) — divisórias |
 | ✅ SectionHeader | pattern | FEITO (composite: linha + cluster ‹ Ver todos › via instance-swap, position start/center/end) — cabeçalho de carrossel |
-| Skeleton | element | loading de listas/cards |
-| Toast | overlay | feedback de ações (aposta feita, erro) |
-| Tooltip | overlay | dicas, info de odds |
-| DropdownMenu | overlay | menus de ação |
-| Drawer | overlay | menu mobile / bet slip lateral |
-| Tabs | navigation | esportes/mercados, abas de conta |
-| Pagination | navigation | listas longas (histórico) |
-| Stepper | navigation | cadastro/KYC multi-etapa |
-| Table | data | histórico de apostas/transações |
-| Empty | data | estados vazios |
+| ✅ Skeleton | element | loading de listas/cards |
+| ✅ Toast | overlay | feedback de ações (aposta feita, erro) |
+| ✅ Tooltip | overlay | dicas, info de odds |
+| ✅ DropdownMenu | overlay | menus de ação |
+| ✅ Drawer | overlay | menu mobile / bet slip lateral |
+| ✅ Tabs | navigation | esportes/mercados, abas de conta |
+| ✅ Pagination | navigation | listas longas (histórico) |
+| ✅ Stepper | navigation | cadastro/KYC multi-etapa |
+| ✅ Table | data | histórico de apostas/transações |
+| ✅ Empty | data | estados vazios |
 
 ## P2 — Úteis (segunda leva)
 | Componente | Categoria |
