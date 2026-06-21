@@ -1,0 +1,17 @@
+/* Ajustes das páginas Docs (navy). Realça os blocos de código para criar uma
+   divisão visual clara entre o preview e o snippet. Cores da escala navy do DS. */
+.sbdocs .docblock-source {
+  background: #071428 !important;        /* navy-950 — mais fundo que o canvas (navy-900) */
+  border: 1px solid #1a2b47;             /* navy-700 */
+  border-radius: 8px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+.sbdocs .docblock-source pre,
+.sbdocs .docblock-source code {
+  background: transparent !important;
+}
+/* Cantos dos previews um pouco mais definidos contra o fundo navy */
+.sbdocs .docs-story,
+.sbdocs .sbdocs-preview {
+  border-radius: 8px;
+}

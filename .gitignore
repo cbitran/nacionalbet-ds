@@ -1,0 +1,11 @@
+node_modules/
+storybook-static/
+*.log
+.DS_Store
+*.zip
+
+# Internos — não publicar no repo público (estratégia/tooling)
+design-system-prd.md
+SKILL.md
+HANDOFF.md
+.claude/

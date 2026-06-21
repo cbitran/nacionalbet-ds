@@ -1,0 +1,545 @@
+/* ============================================================
+   TOKENS.CSS — nacional.bet Dark Theme
+   Base: NuxtUI v4 + Tailwind CSS v4
+   Stack: Next.js 14 · TypeScript · Tailwind · NuxtUI
+   Figma: DS Theme v5 - (NuxtUI 4.0)
+   Atualizado: 2026-06
+   ============================================================
+
+   ARQUITETURA (3 camadas):
+   1. PRIMITIVES  → escala bruta de valores (palette/navy/800)
+   2. SEMANTIC    → propósito funcional (--ui-primary, --ui-bg)
+   3. COMPONENT   → tokens de componente específico (--btn-height-md)
+
+   Regra: o código NUNCA usa primitives diretamente.
+   Sempre usa semantic ou component tokens.
+   ============================================================ */
+
+@import "tailwindcss";
+@import "@nuxt/ui";
+/* Força espaçamento/gap em múltiplos de 4 (remapeia os passos .5 do Tailwind). */
+@import "./spacing-grid-4.css";
+
+/* ============================================================
+   1. PRIMITIVES — Paleta bruta
+   Espelho das variáveis Figma: Colors > palette/*
+   ============================================================ */
+
+@theme static {
+
+  /* ── Navy (Secondary / Background scale) ── */
+  --color-navy-950: #071428;
+  --color-navy-900: #0D1B2E;   /* bg-base      */
+  --color-navy-800: #132036;   /* bg-surface   */
+  --color-navy-700: #1A2B47;   /* bg-card      */
+  --color-navy-600: #243758;   /* bg-elevated  */
+  --color-navy-500: #2E4570;
+  --color-navy-400: #3A5585;
+  --color-navy-300: #4D6B9A;
+  --color-navy-200: #6B8AAD;
+  --color-navy-100: #90A8C3;
+  --color-navy-50:  #C5D4E3;
+
+  /* ── Electric Blue (Primary / Brand scale) ── */
+  --color-electric-950: #071228;
+  --color-electric-900: #0A1E42;
+  --color-electric-800: #0D2B5E;
+  --color-electric-700: #103A80;
+  --color-electric-600: #1350B0;
+  --color-electric-500: #1A6EFF;   /* primary base   */
+  --color-electric-400: #2A7FFF;   /* primary hover  */
+  --color-electric-300: #4D96FF;   /* primary light  */
+  --color-electric-200: #80B4FF;   /* primary subtle text */
+  --color-electric-100: #B3CFFF;
+  --color-electric-50:  #E0ECFF;
+
+  /* ── Green (Success) ── */
+  --color-green-950: #052E16;
+  --color-green-900: #14532D;
+  --color-green-800: #166534;
+  --color-green-700: #15803D;
+  --color-green-600: #16A34A;
+  --color-green-500: #22C55E;   /* success base */
+  --color-green-400: #4ADE80;
+  --color-green-300: #86EFAC;
+  --color-green-200: #BBF7D0;
+  --color-green-100: #DCFCE7;
+  --color-green-50:  #F0FDF4;
+
+  /* ── Yellow (Warning) ── */
+  --color-yellow-950: #422006;
+  --color-yellow-900: #713F12;
+  --color-yellow-800: #854D0E;
+  --color-yellow-700: #A16207;
+  --color-yellow-600: #CA8A04;
+  --color-yellow-500: #EAB308;   /* warning base */
+  --color-yellow-400: #FACC15;
+  --color-yellow-300: #FDE047;
+  --color-yellow-200: #FEF08A;
+  --color-yellow-100: #FEF9C3;
+  --color-yellow-50:  #FEFCE8;
+
+  /* ── Red (Danger / Error) ── */
+  --color-red-950: #450A0A;
+  --color-red-900: #7F1D1D;
+  --color-red-800: #991B1B;
+  --color-red-700: #B91C1C;
+  --color-red-600: #DC2626;
+  --color-red-500: #EF4444;   /* danger base */
+  --color-red-400: #F87171;
+  --color-red-300: #FCA5A5;
+  --color-red-200: #FECACA;
+  --color-red-100: #FEE2E2;
+  --color-red-50:  #FEF2F2;
+
+  /* ── Purple (Info / Accent alternativo) ── */
+  --color-purple-950: #3B0764;
+  --color-purple-900: #581C87;
+  --color-purple-800: #6B21A8;
+  --color-purple-700: #7E22CE;
+  --color-purple-600: #9333EA;
+  --color-purple-500: #A855F7;   /* info base */
+  --color-purple-400: #C084FC;
+  --color-purple-300: #D8B4FE;
+  --color-purple-200: #E9D5FF;
+  --color-purple-100: #F3E8FF;
+  --color-purple-50:  #FAF5FF;
+
+  /* ── Zinc (Neutral) ── */
+  --color-zinc-950: #09090B;
+  --color-zinc-900: #18181B;
+  --color-zinc-800: #27272A;
+  --color-zinc-700: #3F3F46;
+  --color-zinc-600: #52525B;
+  --color-zinc-500: #71717A;
+  --color-zinc-400: #A1A1AA;
+  --color-zinc-300: #D4D4D8;
+  --color-zinc-200: #E4E4E7;
+  --color-zinc-100: #F4F4F5;
+  --color-zinc-50:  #FAFAFA;
+
+  /* ── Utilitários absolutos ── */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-transparent: transparent;
+
+}
+
+/* ============================================================
+   2. SEMANTIC — Tokens funcionais (NuxtUI v4 pattern)
+   Espelho das variáveis Figma: Colors > color/* text/* bg/* border/*
+   ============================================================ */
+
+:root {
+
+  /* ── Cores semânticas principais ── */
+  --ui-primary:    var(--color-electric-500);   /* #1A6EFF — CTAs, links ativos    */
+  --ui-secondary:  var(--color-navy-700);        /* #1A2B47 — elementos secundários */
+  --ui-success:    var(--color-green-500);       /* #22C55E                          */
+  --ui-warning:    var(--color-yellow-500);      /* #EAB308                          */
+  --ui-error:      var(--color-red-500);         /* #EF4444                          */
+  --ui-info:       var(--color-purple-500);      /* #A855F7                          */
+
+  /* ── Backgrounds (espelho de bg/* no Figma) ── */
+  --ui-bg:              var(--color-navy-900);   /* #0D1B2E — fundo raiz da página  */
+  --ui-bg-muted:        var(--color-navy-800);   /* #132036 — painéis, sidebars     */
+  --ui-bg-elevated:     var(--color-navy-700);   /* #1A2B47 — cards                 */
+  --ui-bg-accented:     var(--color-navy-600);   /* #243758 — dropdowns, tooltips   */
+  --ui-bg-inverted:     var(--color-white);      /* #FFFFFF — inversão               */
+
+  /* ── Texto (espelho de text/* no Figma) ── */
+  --ui-text:            var(--color-white);                /* texto principal           */
+  --ui-text-highlighted: var(--color-electric-50);         /* destaque / heading        */
+  --ui-text-muted:      var(--color-navy-100);             /* texto secundário          */
+  --ui-text-toned:      var(--color-navy-200);             /* texto terciário           */
+  --ui-text-dimmed:     var(--color-navy-300);             /* placeholder, hint         */
+  --ui-text-inverted:   var(--color-navy-900);             /* texto sobre fundo claro   */
+
+  /* ── Bordas (espelho de border/* no Figma) ── */
+  --ui-border:          rgba(255, 255, 255, 0.08);   /* borda padrão sutil      */
+  --ui-border-muted:    rgba(255, 255, 255, 0.04);   /* borda mínima            */
+  --ui-border-accented: rgba(255, 255, 255, 0.14);   /* borda hover             */
+  --ui-border-inverted: var(--color-navy-900);        /* borda sobre fundo claro */
+
+  /* ── Radius base (NuxtUI usa multiplicação de --ui-radius) ── */
+  --ui-radius: 0.375rem;   /* 6px base — gera xs:2px sm:4px md:6px lg:8px xl:12px */
+
+  /* ── Container ── */
+  --ui-container: 90rem;   /* 1440px */
+
+  /* ── Header ── */
+  --ui-header-height: 4rem;   /* 64px */
+
+}
+
+/* ============================================================
+   3. COMPONENT TOKENS — Valores específicos por componente
+   Facilita o Storybook e o handoff com dev
+   ============================================================ */
+
+:root {
+
+  /* ─────────────────────────────────
+     BUTTON
+     Espelho: Figma > 🔘 Buttons
+     ───────────────────────────────── */
+
+  /* Alturas por tamanho */
+  --btn-height-xs: 1.75rem;   /* 28px */
+  --btn-height-sm: 2rem;      /* 32px */
+  --btn-height-md: 2.25rem;   /* 36px */
+  --btn-height-lg: 2.5rem;    /* 40px */
+  --btn-height-xl: 3rem;      /* 48px */
+
+  /* Padding horizontal por tamanho */
+  --btn-px-xs: 0.625rem;   /* 10px */
+  --btn-px-sm: 0.75rem;    /* 12px */
+  --btn-px-md: 0.875rem;   /* 14px */
+  --btn-px-lg: 1rem;       /* 16px */
+  --btn-px-xl: 1.25rem;    /* 20px */
+
+  /* Font size por tamanho */
+  --btn-fs-xs: 0.75rem;    /* 12px */
+  --btn-fs-sm: 0.8125rem;  /* 13px */
+  --btn-fs-md: 0.875rem;   /* 14px */
+  --btn-fs-lg: 0.9375rem;  /* 15px */
+  --btn-fs-xl: 1rem;       /* 16px */
+
+  /* Gap (ícone + label) por tamanho */
+  --btn-gap-xs: 0.25rem;   /* 4px */
+  --btn-gap-sm: 0.375rem;  /* 6px */
+  --btn-gap-md: 0.375rem;  /* 6px */
+  --btn-gap-lg: 0.5rem;    /* 8px */
+  --btn-gap-xl: 0.5rem;    /* 8px */
+
+  /* Cores por variante / solid primary (base) */
+  --btn-solid-primary-bg:       var(--color-electric-500);
+  --btn-solid-primary-bg-hover: var(--color-electric-400);
+  --btn-solid-primary-text:     var(--color-white);
+  --btn-solid-primary-shadow:   0 0 16px rgba(26, 110, 255, 0.35);
+
+  /* solid / success */
+  --btn-solid-success-bg:       var(--color-green-500);
+  --btn-solid-success-bg-hover: var(--color-green-600);
+  --btn-solid-success-text:     var(--color-white);
+
+  /* solid / warning */
+  --btn-solid-warning-bg:       var(--color-yellow-500);
+  --btn-solid-warning-bg-hover: var(--color-yellow-600);
+  --btn-solid-warning-text:     var(--color-navy-950);
+
+  /* solid / danger */
+  --btn-solid-danger-bg:        var(--color-red-500);
+  --btn-solid-danger-bg-hover:  var(--color-red-600);
+  --btn-solid-danger-text:      var(--color-white);
+
+  /* solid / neutral */
+  --btn-solid-neutral-bg:       var(--color-navy-600);
+  --btn-solid-neutral-bg-hover: var(--color-navy-500);
+  --btn-solid-neutral-text:     var(--color-white);
+
+  /* outline / primary */
+  --btn-outline-primary-border: rgba(26, 110, 255, 0.50);
+  --btn-outline-primary-text:   var(--color-electric-300);
+
+  /* outline / danger */
+  --btn-outline-danger-border:  rgba(239, 68, 68, 0.50);
+  --btn-outline-danger-text:    var(--color-red-500);
+
+  /* soft / primary */
+  --btn-soft-primary-bg:    rgba(26, 110, 255, 0.15);
+  --btn-soft-primary-text:  var(--color-electric-300);
+
+  /* soft / success */
+  --btn-soft-success-bg:    rgba(34, 197, 94, 0.12);
+  --btn-soft-success-text:  var(--color-green-500);
+
+  /* soft / danger */
+  --btn-soft-danger-bg:     rgba(239, 68, 68, 0.12);
+  --btn-soft-danger-text:   var(--color-red-500);
+
+  /* disabled */
+  --btn-disabled-opacity: 0.4;
+
+  /* focus ring */
+  --btn-focus-ring:        0 0 0 3px rgba(26, 110, 255, 0.40);
+
+  /* ─────────────────────────────────
+     BADGE
+     ───────────────────────────────── */
+  --badge-height-sm:  1.25rem;  /* 20px */
+  --badge-height-md:  1.5rem;   /* 24px */
+  --badge-height-lg:  1.75rem;  /* 28px */
+
+  --badge-fs-sm:  0.6875rem;   /* 11px */
+  --badge-fs-md:  0.75rem;     /* 12px */
+  --badge-fs-lg:  0.8125rem;   /* 13px */
+
+  --badge-live-bg:     var(--color-red-500);
+  --badge-live-text:   var(--color-white);
+  --badge-live-pulse:  badge-pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+
+  /* ─────────────────────────────────
+     CARD / GAME ROW
+     ───────────────────────────────── */
+  --card-bg:              var(--ui-bg-elevated);       /* #1A2B47 */
+  --card-bg-hover:        var(--ui-bg-accented);       /* #243758 */
+  --card-border:          var(--ui-border);             /* rgba white 8% */
+  --card-border-hover:    var(--ui-border-accented);    /* rgba white 14% */
+  --card-border-active:   rgba(26, 110, 255, 0.50);
+  --card-radius:          0.5rem;                       /* 8px */
+  --card-padding-x:       1rem;                         /* 16px */
+  --card-padding-y:       0.75rem;                      /* 12px */
+
+  /* ─────────────────────────────────
+     ODDS BUTTON
+     ───────────────────────────────── */
+  --odds-btn-width:       3.5rem;     /* 56px */
+  --odds-btn-height:      2.5rem;     /* 40px */
+  --odds-btn-bg:          var(--ui-bg-accented);
+  --odds-btn-bg-active:   rgba(26, 110, 255, 0.15);
+  --odds-btn-border:      var(--ui-border);
+  --odds-btn-border-active: rgba(26, 110, 255, 0.50);
+  --odds-btn-text:        var(--ui-text);
+  --odds-btn-text-active: var(--color-electric-300);
+  --odds-btn-label-text:  var(--ui-text-dimmed);
+
+  /* ─────────────────────────────────
+     SIDEBAR NAV
+     ───────────────────────────────── */
+  --sidebar-width-collapsed: 4rem;    /* 64px */
+  --sidebar-width-expanded:  13.75rem; /* 220px */
+  --sidebar-bg:              var(--ui-bg);
+  --sidebar-border:          var(--ui-border);
+  --sidebar-item-height:     2.75rem;   /* 44px */
+  --sidebar-icon-size:       1.25rem;   /* 20px */
+  --sidebar-icon-color:      var(--ui-text-dimmed);
+  --sidebar-icon-active:     var(--ui-primary);
+  --sidebar-item-active-bg:  rgba(26, 110, 255, 0.12);
+  --sidebar-active-border:   3px solid var(--ui-primary);
+
+  /* ─────────────────────────────────
+     TAB BAR
+     ───────────────────────────────── */
+  --tab-height:              2.75rem;   /* 44px */
+  --tab-fs:                  0.8125rem; /* 13px */
+  --tab-text:                var(--ui-text-dimmed);
+  --tab-text-active:         var(--ui-text);
+  --tab-border-active:       2px solid var(--ui-primary);
+  --tab-bg:                  var(--ui-bg-muted);
+  --tab-border-bottom:       var(--ui-border);
+
+  /* ─────────────────────────────────
+     SCORE / DISPLAY
+     ───────────────────────────────── */
+  --score-fs:         2rem;     /* 32px — número do placar */
+  --score-font:       var(--font-display);
+  --score-weight:     700;
+  --score-color:      var(--ui-text);
+  --team-name-fs:     0.8125rem; /* 13px */
+  --team-name-color:  var(--ui-text-muted);
+  --team-name-case:   uppercase;
+  --team-name-spacing: 0.05em;
+
+  /* ─────────────────────────────────
+     INPUT / FORM
+     ───────────────────────────────── */
+  --input-height-sm:  2rem;       /* 32px */
+  --input-height-md:  2.25rem;    /* 36px */
+  --input-height-lg:  2.75rem;    /* 44px */
+  --input-bg:         var(--ui-bg-elevated);
+  --input-border:     var(--ui-border);
+  --input-border-focus: rgba(26, 110, 255, 0.60);
+  --input-text:       var(--ui-text);
+  --input-placeholder: var(--ui-text-dimmed);
+  --input-radius:     0.375rem;   /* 6px */
+
+}
+
+/* ============================================================
+   4. SPACING — Escala de espaçamento (base 4px)
+   Espelho das variáveis Figma: Spacing > space-*
+   ============================================================ */
+
+@theme {
+  --spacing-px:   1px;
+  --spacing-0:    0px;
+  --spacing-0-5:  2px;
+  --spacing-1:    4px;
+  --spacing-1-5:  6px;
+  --spacing-2:    8px;
+  --spacing-2-5:  10px;
+  --spacing-3:    12px;
+  --spacing-3-5:  14px;
+  --spacing-4:    16px;
+  --spacing-5:    20px;
+  --spacing-6:    24px;
+  --spacing-7:    28px;
+  --spacing-8:    32px;
+  --spacing-9:    36px;
+  --spacing-10:   40px;
+  --spacing-11:   44px;
+  --spacing-12:   48px;
+  --spacing-14:   56px;
+  --spacing-16:   64px;
+  --spacing-20:   80px;
+  --spacing-24:   96px;
+  --spacing-28:   112px;
+  --spacing-32:   128px;
+}
+
+/* ============================================================
+   5. TYPOGRAPHY — Fontes e escala tipográfica
+   Espelho das variáveis Figma: Spacing > font-size-* font-leading-*
+   ============================================================ */
+
+@theme {
+
+  /* Famílias — Montserrat (Google Fonts) como família única para display e corpo */
+  --font-display: "Montserrat", system-ui, sans-serif;   /* headlines, scores, nomes de times */
+  --font-sans:    "Montserrat", system-ui, sans-serif;   /* body, labels, UI */
+  --font-mono:    "JetBrains Mono", "Fira Code", monospace; /* odds, números tabulares */
+
+  /* Tamanhos — Tailwind v4 usa o namespace --text-* (NÃO --font-size-*).
+     line-height pareado (--text-*--line-height) p/ que `text-<size>` aplique
+     tamanho + leading juntos, igual aos text styles do Figma.
+     5xl/6xl não têm leading no DS → ~1.05 para display. */
+  --text-xs:   12px;  --text-xs--line-height:   16px;
+  --text-sm:   13px;  --text-sm--line-height:   20px;
+  --text-base: 15px;  --text-base--line-height: 24px;
+  --text-md:   17px;  --text-md--line-height:   28px;
+  --text-lg:   20px;  --text-lg--line-height:   28px;
+  --text-xl:   24px;  --text-xl--line-height:   32px;
+  --text-2xl:  30px;  --text-2xl--line-height:  36px;
+  --text-3xl:  36px;  --text-3xl--line-height:  40px;
+  --text-4xl:  48px;  --text-4xl--line-height:  48px;
+  --text-5xl:  60px;  --text-5xl--line-height:  64px;
+  --text-6xl:  72px;  --text-6xl--line-height:  76px;
+
+  /* Line heights (utilities leading-* standalone) */
+  --leading-xs:   16px;
+  --leading-sm:   20px;
+  --leading-base: 24px;
+  --leading-md:   28px;
+  --leading-lg:   28px;
+  --leading-xl:   32px;
+  --leading-2xl:  36px;
+  --leading-3xl:  40px;
+  --leading-4xl:  48px;
+
+  /* Letter spacing */
+  --tracking-tight:  -0.02em;
+  --tracking-normal:  0em;
+  --tracking-wide:    0.04em;
+  --tracking-wider:   0.08em;
+  --tracking-caps:    0.12em;
+
+}
+
+/* ============================================================
+   6. BORDER RADIUS — Escala de arredondamento
+   Espelho das variáveis Figma: Spacing > radius-*
+   Derivado de --ui-radius como multiplicador base
+   ============================================================ */
+
+@theme {
+  --radius-none:  0px;
+  --radius-xs:    2px;
+  --radius-sm:    4px;
+  --radius-md:    6px;     /* --ui-radius base */
+  --radius-lg:    8px;
+  --radius-xl:    12px;
+  --radius-2xl:   16px;
+  --radius-3xl:   24px;
+  --radius-full:  9999px;
+}
+
+/* ============================================================
+   7. SHADOWS / ELEVATION
+   ============================================================ */
+
+@theme {
+  --shadow-sm:    0 1px 3px rgba(0, 0, 0, 0.40);
+  --shadow-md:    0 4px 12px rgba(0, 0, 0, 0.50);
+  --shadow-lg:    0 8px 24px rgba(0, 0, 0, 0.60);
+  --shadow-xl:    0 16px 48px rgba(0, 0, 0, 0.70);
+
+  --shadow-glow-primary: 0 0 16px rgba(26, 110, 255, 0.35);
+  --shadow-glow-success: 0 0 16px rgba(34, 197, 94, 0.30);
+  --shadow-glow-danger:  0 0 16px rgba(239, 68, 68, 0.30);
+}
+
+/* ============================================================
+   8. ANIMAÇÕES / MOTION
+   ============================================================ */
+
+:root {
+  --duration-instant: 50ms;
+  --duration-fast:    100ms;
+  --duration-normal:  200ms;
+  --duration-slow:    350ms;
+  --duration-slower:  500ms;
+
+  --ease-default:  cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in:       cubic-bezier(0.4, 0, 1, 1);
+  --ease-out:      cubic-bezier(0, 0, 0.2, 1);
+  --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes badge-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes odds-flash {
+  0%   { background-color: rgba(26, 110, 255, 0.25); }
+  100% { background-color: transparent; }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ============================================================
+   9. BASE STYLES — Reset e defaults do tema
+   Aplicado automaticamente pelo NuxtUI no <body>
+   ============================================================ */
+
+body {
+  background-color: var(--ui-bg);
+  color: var(--ui-text);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--leading-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Cursor pointer em botões (override do Tailwind v4) */
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+/* ============================================================
+   10. DARK MODE — Confirmação explícita (já é dark-first aqui)
+   Para projetos que precisem de suporte light mode no futuro,
+   as variáveis semantic seriam sobrescritas no :root sem .dark
+   ============================================================ */
+
+.dark,
+[data-theme="dark"] {
+  color-scheme: dark;
+  /* Tokens já declarados em :root são dark-first.
+     Este bloco existe para compatibilidade com sistemas
+     que injetam .dark via nuxt-color-mode. */
+}
+

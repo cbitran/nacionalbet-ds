@@ -1,0 +1,9 @@
+/* Montserrat (mesma família dos Text Styles do Figma) — @import deve vir antes de tudo */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* Bridge de tema — importa a fonte da verdade do DS.
+   tokens.css já faz @import "tailwindcss" e @import "@nuxt/ui" e define
+   as variáveis semânticas (--ui-primary, --ui-bg, etc.). Trocar a marca = trocar este arquivo. */
+@import "../../tokens.css";
+
+body { font-family: "Montserrat", system-ui, sans-serif; }

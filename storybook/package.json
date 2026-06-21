@@ -1,0 +1,27 @@
+{
+  "name": "nacionalbet-ds-storybook",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "gen:components": "node scripts/gen-nuxt-ui-components.mjs",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@nuxt/ui": "^4.0.0",
+    "tailwindcss": "^4.0.0",
+    "vue": "^3.5.0",
+    "vue-router": "^4.4.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.6.0",
+    "@storybook/vue3-vite": "^8.6.0",
+    "@vitejs/plugin-vue": "^5.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "storybook": "^8.6.0",
+    "typescript": "^5.6.0",
+    "vite": "^6.0.0"
+  }
+}
