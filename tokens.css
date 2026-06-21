@@ -405,7 +405,7 @@
      tamanho + leading juntos, igual aos text styles do Figma.
      5xl/6xl não têm leading no DS → ~1.05 para display. */
   --text-xs:   12px;  --text-xs--line-height:   16px;
-  --text-sm:   13px;  --text-sm--line-height:   20px;
+  --text-sm:   14px;  --text-sm--line-height:   20px;
   --text-base: 15px;  --text-base--line-height: 24px;
   --text-md:   17px;  --text-md--line-height:   28px;
   --text-lg:   20px;  --text-lg--line-height:   28px;
