@@ -53,6 +53,38 @@ jq -c '{
 - 🔵 **LOW** — `color` não modelado como propriedade no Figma (cor via estado) — normalmente por design.
 - ⚪ **INFO** — componente pulado (sem mapeamento direto no @nuxt/ui).
 
+## Camada Foundations — tokens.css ↔ Figma (bidirecional)
+
+> **Diretriz do DS:** tudo no CSS deve estar no Figma e vice-versa. Esta camada pega exatamente
+> o tipo de gap que sumiu sombra/blur (existiam no `tokens.css` mas sem Effect Style no Figma).
+
+```bash
+node tools/parity/audit-foundations.mjs        # exit 1 se houver divergência real
+node tools/parity/audit-foundations.mjs --md > tools/parity/REPORT-foundations.md
+```
+
+Compara, por família (shadow/glow/blur/radius/spacing/gradient/tamanho/peso), os tokens do
+`tokens.css` (lido AO VIVO) com `figma-styles.json` (snapshot do Figma). By-design no `IGNORE`
+do script: half-steps de spacing (compat Tailwind), `radius-default` (alias de md), `text 7xl–9xl`
+(default do Tailwind).
+
+### Regenerar `figma-styles.json`
+Com o plugin no arquivo do DS, via `figma_execute`:
+
+```js
+await figma.loadAllPagesAsync();
+const effects=(await figma.getLocalEffectStylesAsync()).map(s=>s.name);
+const paints=(await figma.getLocalPaintStylesAsync()).map(s=>s.name);
+const cols=await figma.variables.getLocalVariableCollectionsAsync();
+const vars=await figma.variables.getLocalVariablesAsync();
+const spacing=cols.find(c=>c.name==='Spacing');
+const sv=vars.filter(v=>v.variableCollectionId===spacing.id).map(v=>v.name);
+return { effects, paints,
+  spacingVars: sv.filter(n=>n.startsWith('space-')),
+  radiusVars: sv.filter(n=>n.startsWith('radius-')),
+  fontSizeVars: sv.filter(n=>n.startsWith('font-size-')) };
+```
+
 ## Próximas camadas (não implementadas)
 
 - **Camada 2**: `@storybook/test-runner` (Playwright) com `play()` por story + axe (render/interação/a11y em CI).

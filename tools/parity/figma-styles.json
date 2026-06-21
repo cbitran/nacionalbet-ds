@@ -1,0 +1,31 @@
+{
+  "_comment": "Snapshot das FOUNDATIONS no Figma (DS Theme v5): Effect/Paint/Text Styles + variáveis Spacing/Type Scale. Regenerar via README (figma_execute getLocal*StylesAsync + getLocalVariables).",
+  "generatedAt": "2026-06-21",
+  "effectStyles": [
+    "nacional.bet/shadow/sm","nacional.bet/shadow/md","nacional.bet/shadow/lg","nacional.bet/shadow/xl",
+    "nacional.bet/glow/primary","nacional.bet/glow/success","nacional.bet/glow/danger",
+    "nacional.bet/blur/sm","nacional.bet/blur/md","nacional.bet/blur/lg"
+  ],
+  "paintStyles": [
+    "nacional.bet/brand/primary","nacional.bet/brand/secondary","nacional.bet/state/success","nacional.bet/state/warning","nacional.bet/state/danger","nacional.bet/state/info",
+    "nacional.bet/bg/base","nacional.bet/bg/surface","nacional.bet/bg/card","nacional.bet/bg/elevated","nacional.bet/bg/inverted",
+    "nacional.bet/text/primary","nacional.bet/text/highlighted","nacional.bet/text/muted","nacional.bet/text/toned","nacional.bet/text/dimmed","nacional.bet/text/inverted",
+    "nacional.bet/border/default","nacional.bet/border/muted","nacional.bet/border/accented","nacional.bet/border/active",
+    "nacional.bet/palette/electric/500","nacional.bet/palette/electric/400","nacional.bet/palette/electric/300",
+    "nacional.bet/palette/navy/900","nacional.bet/palette/navy/800","nacional.bet/palette/navy/700","nacional.bet/palette/navy/600",
+    "gradient/primary"
+  ],
+  "spacingVars": [
+    "space-0","space-px","space-1","space-2","space-3","space-4","space-5","space-6","space-7","space-8","space-9","space-10","space-11","space-12","space-14","space-16","space-20","space-24","space-28","space-32"
+  ],
+  "radiusVars": [
+    "radius-none","radius-xs","radius-sm","radius-default","radius-md","radius-lg","radius-xl","radius-2xl","radius-3xl","radius-full"
+  ],
+  "fontSizeVars": [
+    "font-size-xs","font-size-sm","font-size-base","font-size-md","font-size-lg","font-size-xl","font-size-2xl","font-size-3xl","font-size-4xl","font-size-5xl","font-size-6xl","font-size-7xl","font-size-8xl","font-size-9xl"
+  ],
+  "textStyleWeights": ["regular","medium","semibold","bold","extrabold"],
+  "typeScaleVars": [
+    "font/display-size","font/display-lh","font/h1-size","font/h1-lh","font/h2-size","font/h2-lh","font/h3-size","font/h3-lh","font/title-size","font/title-lh","font/body-size","font/body-lh","font/small-size","font/small-lh","font/caption-size","font/caption-lh"
+  ]
+}
