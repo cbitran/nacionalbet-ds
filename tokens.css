@@ -434,6 +434,14 @@
   --tracking-wider:   0.08em;
   --tracking-caps:    0.12em;
 
+  /* Pesos — Montserrat carrega 100..900. Estes são os pesos oficiais do DS
+     (utilities font-*). Extra Bold (800) usado em destaques de interface. */
+  --font-weight-regular:   400;
+  --font-weight-medium:    500;
+  --font-weight-semibold:  600;
+  --font-weight-bold:      700;
+  --font-weight-extrabold: 800;
+
 }
 
 /* ============================================================
@@ -453,6 +461,21 @@
   --radius-3xl:   24px;
   --radius-full:  9999px;
 }
+
+/* ============================================================
+   6.5 GRADIENTS — camada de decoração (NÃO é cor semântica)
+   O @nuxt/ui só conhece cores sólidas; gradiente é aplicado via
+   classe/utilitário. No Figma vira Paint Style (não variável).
+   Espelho do Figma: Paint Style "gradient/primary".
+   ============================================================ */
+
+:root {
+  /* Hero / CTA de marca: electric-500 → purple-600 */
+  --gradient-primary: linear-gradient(135deg, var(--color-electric-500), var(--color-purple-600));
+}
+
+/* Utilitário pronto p/ usar em qualquer componente (ex.: <UButton :ui="{ base: 'bg-gradient-primary' }" />) */
+.bg-gradient-primary { background-image: var(--gradient-primary); }
 
 /* ============================================================
    7. SHADOWS / ELEVATION

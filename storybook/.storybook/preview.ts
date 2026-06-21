@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/vue3'
 import { setup } from '@storybook/vue3'
 import { createMemoryHistory, createRouter } from 'vue-router'
+import { createHead } from '@unhead/vue/client'
 import ui from '@nuxt/ui/vue-plugin'
 import '../src/main.css'
 // Manifesto AUTO-GERADO com TODOS os componentes do @nuxt/ui (scripts/gen-nuxt-ui-components.mjs,
@@ -20,6 +21,11 @@ const router = createRouter({
 })
 
 setup((app) => {
+  // Fora do Nuxt, o @nuxt/ui precisa de um head provider explícito: o plugin de cores
+  // injeta <style> com as CSS vars das cores via useHead(). Sem isso, qualquer story que
+  // renderiza um componente colorido (Button, etc.) quebra com "useHead() was called
+  // without provide context". O Nuxt fornece isso automaticamente; aqui instalamos à mão.
+  app.use(createHead())
   app.use(ui) // plugins (color-mode/head) + overlays/toasts
   app.use(router)
   for (const [name, c] of Object.entries(nuxtUiComponents)) app.component(name, c)

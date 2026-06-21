@@ -25,6 +25,7 @@ const WEIGHTS = [
   { key: 'medium', w: 500 },
   { key: 'semibold', w: 600 },
   { key: 'bold', w: 700 },
+  { key: 'extrabold', w: 800 },
 ]
 const TRACKING = [
   { key: 'tight', em: '-0.02em' },
