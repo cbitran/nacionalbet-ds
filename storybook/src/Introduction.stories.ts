@@ -19,15 +19,20 @@ export const Welcome: Story = {
   name: 'nacional.bet DS',
   render: () => ({
     template: `
-    <div style="min-height:100vh;background:
+    <div style="background:
         radial-gradient(1200px 500px at 80% -10%, rgba(26,110,255,.18), transparent 60%),
-        radial-gradient(900px 500px at -10% 110%, rgba(124,77,255,.16), transparent 55%),
+        radial-gradient(900px 600px at -10% 120%, rgba(124,77,255,.16), transparent 55%),
         #0D1B2E;color:#E5E9F0;font-family:Montserrat,sans-serif;padding:64px 56px;box-sizing:border-box;">
 
       <div style="max-width:980px;margin:0 auto;">
         <!-- hero -->
-        <span style="display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
-            color:#8A96AC;border:1px solid #1A2B47;border-radius:999px;padding:6px 14px;">Design System</span>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+          <span style="display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+              color:#8A96AC;border:1px solid #1A2B47;border-radius:999px;padding:6px 14px;">Design System</span>
+          <span style="display:inline-block;font-size:12px;letter-spacing:.06em;font-weight:600;
+              color:#1A6EFF;background:rgba(26,110,255,.12);border:1px solid rgba(26,110,255,.4);
+              border-radius:999px;padding:6px 14px;">⚡ 100% @nuxt/ui v4</span>
+        </div>
 
         <h1 style="font-size:64px;line-height:1.05;font-weight:800;margin:24px 0 0;letter-spacing:-.02em;">
           nacional<span style="color:#1A6EFF;">.bet</span>
@@ -49,6 +54,20 @@ export const Welcome: Story = {
           ${card('🎨', 'Foundations', 'Cores, espaçamento, tipografia, contraste e efeitos.', 'foundations-colors--docs')}
           ${card('🧩', 'Components', '35 componentes prontos, do Button à Table.', 'components-button--docs')}
           ${card('📐', 'Spacing semântico', 'Quando usar gap vs padding.', 'foundations-spacing-semântico--quando-usar')}
+        </div>
+
+        <!-- nuxt/ui highlight -->
+        <div style="display:flex;align-items:flex-start;gap:14px;margin:20px 0 0;padding:18px 20px;
+            background:linear-gradient(90deg, rgba(26,110,255,.12), rgba(124,77,255,.05));
+            border:1px solid rgba(26,110,255,.35);border-radius:14px;">
+          <div style="font-size:22px;line-height:1.2;">⚡</div>
+          <div>
+            <div style="font-size:15px;font-weight:700;color:#E5E9F0;">100% alinhado ao @nuxt/ui v4</div>
+            <div style="font-size:13px;color:#B7C0D0;line-height:1.5;margin-top:4px;">
+              Cada componente espelha as <strong style="color:#fff;">variants, props e cores</strong> da API oficial do @nuxt/ui v4.
+              A paridade <strong style="color:#fff;">Figma ↔ código ↔ @nuxt/ui</strong> é verificada por harness automatizado.
+            </div>
+          </div>
         </div>
 
         <!-- footer -->
