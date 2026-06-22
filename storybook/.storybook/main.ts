@@ -17,7 +17,24 @@ const config: StorybookConfig = {
     <style>
       [data-nodetype="document"] svg { color: #1a6eff !important; }   /* Docs → electric */
       [data-nodetype="story"] svg { color: #8a96ac !important; }      /* Story → neutro */
-    </style>`,
+      /* Capa (Introduction): esconde o painel de addons p/ ela respirar.
+         options.showPanel:false não funciona com layout:fullscreen no SB8, então
+         marcamos o body via script (abaixo) e ocultamos o container do painel. */
+      body.sb-cover div:has(> #storybook-panel-root) { display: none !important; }
+    </style>
+    <script>
+      (function () {
+        function update() {
+          try {
+            var path = (window.location.search || '') + (window.location.hash || '');
+            document.body.classList.toggle('sb-cover', /introduction--welcome/.test(path));
+          } catch (e) {}
+        }
+        ['hashchange', 'popstate', 'pageshow'].forEach(function (ev) { window.addEventListener(ev, update); });
+        setInterval(update, 400); // ?path muda via pushState (sem evento) — poll leve cobre
+        update();
+      })();
+    </script>`,
   // @nuxt/ui/vite só tem condição ESM → carrega via dynamic import (evita o require CJS do Storybook)
   viteFinal: async (cfg, { configType }) => {
     const { default: vue } = await import('@vitejs/plugin-vue')

@@ -1,11 +1,20 @@
 import { create } from '@storybook/theming'
 
+// Wordmark da marca na sidebar (SVG inline → data URI). ".bet" em electric.
+const brandImage = `data:image/svg+xml,${encodeURIComponent(
+  `<svg xmlns="http://www.w3.org/2000/svg" width="148" height="22" viewBox="0 0 148 22">
+    <text x="0" y="17" font-family="Montserrat,Helvetica,Arial,sans-serif" font-size="18" font-weight="800" letter-spacing="-0.3" fill="#E5E9F0">nacional<tspan fill="#1A6EFF">.bet</tspan></text>
+  </svg>`,
+)}`
+
 // Tema navy do Storybook (chrome + docs), alinhado ao DS — acaba com o fundo branco
 // das páginas Docs. Escala navy do tokens.css: 950 #071428 · 900 #0D1B2E · 800 #132036
 // · 700 #1A2B47 · 600 #243758. Primary electric #1A6EFF.
 export default create({
   base: 'dark',
   brandTitle: 'nacional.bet — Design System',
+  brandImage,
+  brandUrl: 'https://cbitran.github.io/nacionalbet-ds/',
 
   // superfícies (do mais escuro p/ o conteúdo um tom acima → leve elevação)
   appBg: '#071428', // navy-950 — sidebar / fundo geral

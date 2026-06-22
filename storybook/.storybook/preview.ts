@@ -41,6 +41,11 @@ const preview: Preview = {
   decorators: [() => ({ template: '<UApp><story /></UApp>' })],
   parameters: {
     layout: 'centered',
+    // Capa primeiro, depois fundações, componentes e padrões. Dentro de cada grupo
+    // a ordem segue alfabética (default).
+    options: {
+      storySort: { order: ['Introduction', 'Foundations', 'Components', 'Patterns', '*'] },
+    },
     docs: { theme }, // páginas Docs em navy (não mais fundo branco)
     backgrounds: {
       default: 'navy',
