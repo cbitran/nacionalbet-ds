@@ -4,6 +4,8 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 // nacional.bet, números do DS e atalhos pras seções. Layout fullscreen (ocupa o canvas).
 const meta: Meta = {
   title: 'Introduction',
+  // Sem autodocs aqui: a capa não precisa da página "Docs" gerada — ela é a própria home.
+  tags: ['!autodocs'],
   parameters: {
     layout: 'fullscreen',
     options: { showPanel: false },
