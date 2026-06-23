@@ -15,6 +15,7 @@
    Sempre usa semantic ou component tokens.
    ============================================================ */
 
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
 @import "tailwindcss";
 @import "@nuxt/ui";
 /* Força espaçamento/gap em múltiplos de 4 (remapeia os passos .5 do Tailwind). */
@@ -422,9 +423,9 @@
 
 @theme {
 
-  /* Famílias — Montserrat (Google Fonts) como família única para display e corpo */
-  --font-display: "Montserrat", system-ui, sans-serif;   /* headlines, scores, nomes de times */
-  --font-sans:    "Montserrat", system-ui, sans-serif;   /* body, labels, UI */
+  /* Famílias — Space Grotesk (Google Fonts) como família única para display e corpo */
+  --font-display: "Space Grotesk", system-ui, sans-serif;   /* headlines, scores, nomes de times */
+  --font-sans:    "Space Grotesk", system-ui, sans-serif;   /* body, labels, UI */
   --font-mono:    "JetBrains Mono", "Fira Code", monospace; /* odds, números tabulares */
 
   /* Tamanhos — Tailwind v4 usa o namespace --text-* (NÃO --font-size-*).
@@ -463,8 +464,8 @@
   --tracking-wider:   0.08em;
   --tracking-caps:    0.12em;
 
-  /* Pesos — Montserrat carrega 100..900. Estes são os pesos oficiais do DS
-     (utilities font-*). Extra Bold (800) usado em destaques de interface. */
+  /* Pesos — Space Grotesk carrega 300..700. Estes são os pesos oficiais do DS
+     (utilities font-*). Extrabold (800) cai p/ 700 (peso máx. da família). */
   --font-weight-regular:   400;
   --font-weight-medium:    500;
   --font-weight-semibold:  600;
