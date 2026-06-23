@@ -1,0 +1,23 @@
+/* ─────────────────────────────────────────────────────────────
+   Surface mode: CASINO (near-black) — espelho do mode "Casino"
+   da coleção Colors no Figma (DS-Theme-v5).
+   O DS base é navy; o cassino usa superfícies near-black.
+   Uso: importar DEPOIS do tokens.css para trocar a superfície.
+   Só mexe em bg/text/border — primary continua vindo da marca.
+   ──────────────────────────────────────────────────────────── */
+:root {
+  /* backgrounds */
+  --ui-bg:          #070809;
+  --ui-bg-muted:    #0D0F13;
+  --ui-bg-elevated: #13161D;
+  --ui-bg-accented: #191D27;
+
+  /* texto — neutros (mais legíveis no near-black que o navy do DS) */
+  --ui-text-muted:  #868D9C;
+  --ui-text-dimmed: #535A69;
+
+  /* bordas */
+  --ui-border:          rgba(255, 255, 255, 0.06);
+  --ui-border-muted:    rgba(255, 255, 255, 0.03);
+  --ui-border-accented: rgba(255, 255, 255, 0.13);
+}
