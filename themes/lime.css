@@ -1,0 +1,46 @@
+/* ─────────────────────────────────────────────────────────────
+   Brand mode: LIME — espelho em código do mode "Lime" da coleção
+   Brand no Figma (DS-Theme-v5 / NuxtUI 4.0).
+   Escala = Tailwind lime; primary/500 = #84CC16.
+   Uso: importar DEPOIS do tokens.css para trocar a marca pro lime
+   (equivale a selecionar o mode "Lime" no Figma).
+   ──────────────────────────────────────────────────────────── */
+:root {
+  /* escala primary → lime (palette/lime/50…950) */
+  --color-lime-950: #1A2E05;
+  --color-lime-900: #365314;
+  --color-lime-800: #3F6212;
+  --color-lime-700: #4D7C0F;
+  --color-lime-600: #65A30D;
+  --color-lime-500: #84CC16;   /* primary base  */
+  --color-lime-400: #A3E635;   /* primary hover */
+  --color-lime-300: #BEF264;   /* primary light / texto-acento */
+  --color-lime-200: #D9F99D;
+  --color-lime-100: #ECFCCB;
+  --color-lime-50:  #F7FEE7;
+
+  /* semântico */
+  --ui-primary:          var(--color-lime-500);
+  --ui-text-highlighted: var(--color-lime-50);
+
+  /* botões — primary */
+  --btn-solid-primary-bg:       var(--color-lime-500);
+  --btn-solid-primary-bg-hover: var(--color-lime-400);
+  --btn-solid-primary-text:     var(--color-lime-950); /* lime-500 é claro → texto escuro (contraste AA) */
+  --btn-solid-primary-shadow:   0 0 16px rgba(132, 204, 22, 0.35);
+  --btn-outline-primary-border: rgba(132, 204, 22, 0.50);
+  --btn-outline-primary-text:   var(--color-lime-300);
+  --btn-soft-primary-bg:        rgba(132, 204, 22, 0.15);
+  --btn-soft-primary-text:      var(--color-lime-300);
+  --btn-focus-ring:             0 0 0 3px rgba(132, 204, 22, 0.40);
+
+  /* superfícies / estados ativos */
+  --card-border-active:     rgba(132, 204, 22, 0.50);
+  --odds-btn-bg-active:      rgba(132, 204, 22, 0.15);
+  --odds-btn-border-active:  rgba(132, 204, 22, 0.50);
+  --odds-btn-text-active:    var(--color-lime-300);
+  --sidebar-item-active-bg:  rgba(132, 204, 22, 0.12);
+  --input-border-focus:      rgba(132, 204, 22, 0.60);
+  --shadow-glow-primary:     0 0 16px rgba(132, 204, 22, 0.35);
+  --gradient-primary:        linear-gradient(135deg, var(--color-lime-500), var(--color-purple-600));
+}

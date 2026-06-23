@@ -11,6 +11,9 @@ import '../src/main.css'
 import { nuxtUiComponents } from './nuxt-ui-components.generated'
 import theme from './theme'
 import './docs.css'
+// Espelho dos modes da coleção `Brand` (Figma). Default = Electric (já no tokens.css).
+// O Lime é injetado como <style> quando selecionado no toolbar "Brand".
+import limeBrand from '../../themes/lime.css?inline'
 
 // vue-router de memória: o @nuxt/ui usa <ULink> (useRoute/useRouter) em vários
 // componentes (Breadcrumb, Pagination, Tabs…). Sem um router, eles avisam
@@ -35,10 +38,41 @@ const preview: Preview = {
   // Autodocs global: gera uma página "Docs" por componente (descrição + tabela de
   // args/controls + todas as variações numa página). Facilita o handoff pro front.
   tags: ['autodocs'],
+  // Seletor de marca (mode da coleção `Brand` no Figma). Troca a escala primary
+  // em runtime — equivale a mudar o mode no Figma.
+  globalTypes: {
+    brand: {
+      description: 'Marca (mode da coleção Brand)',
+      defaultValue: 'electric',
+      toolbar: {
+        title: 'Brand',
+        icon: 'paintbrush',
+        items: [
+          { value: 'electric', title: 'Electric (default)' },
+          { value: 'lime', title: 'Lime' },
+        ],
+        dynamicTitle: true,
+      },
+    },
+  },
   // Envolve TODA story num <UApp>: provê os providers de tooltip/overlay/toast do
   // reka-ui. Sem ele, componentes como UTooltip dão erro "must be used within
   // TooltipProvider". <UApp> já está registrado globalmente pelo manifesto.
-  decorators: [() => ({ template: '<UApp><story /></UApp>' })],
+  // O side-effect aplica/remove o tema da marca selecionada no toolbar.
+  decorators: [
+    (story, context) => {
+      if (typeof document !== 'undefined') {
+        let el = document.getElementById('sb-brand-override') as HTMLStyleElement | null
+        if (!el) {
+          el = document.createElement('style')
+          el.id = 'sb-brand-override'
+          document.head.appendChild(el)
+        }
+        el.textContent = context.globals.brand === 'lime' ? limeBrand : ''
+      }
+      return { template: '<UApp><story /></UApp>' }
+    },
+  ],
   parameters: {
     layout: 'centered',
     // Capa primeiro, depois fundações, componentes e padrões. Dentro de cada grupo
